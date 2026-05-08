@@ -86,7 +86,13 @@ const faqs = [
 
 const weekDays = ["Pn", "Wt", "Śr", "Cz", "Pt", "Sb", "Nd"];
 const monthDays = Array.from({ length: 31 }, (_, i) => i + 1);
-const highlightedDays = new Set([4, 9, 14, 21, 28]);
+const todayDay = 14;
+const dayCategories: Record<number, "spolka" | "zus" | "us" | "krs"> = {
+  9: "spolka",
+  10: "zus",
+  25: "us",
+  30: "krs",
+};
 
 const upcomingDeadlines = [
   { title: "Zgromadzenie wspólników", date: "09.06.2026", note: "Uchwała o podziale zysku" },
@@ -99,16 +105,16 @@ export default function Home() {
   return (
     <div className="pb-16">
       <section id="home" className="hero-shell">
-        <header className="hero-content sticky top-0 z-50 border-b border-(--card-border)/45 bg-[oklch(0.15_0.022_260/0.55)] backdrop-blur-xl">
-          <div className="container-main flex items-center justify-between py-5">
-            <div className="flex items-center gap-3">
+        <header className="hero-content sticky top-0 z-50 border-b border-(--card-border)/50 bg-[oklch(0.14_0.02_258/0.62)] backdrop-blur-2xl">
+          <div className="container-main grid grid-cols-[1fr_auto_1fr] items-center py-4">
+            <div className="flex items-center gap-3 justify-self-start">
               <Image src="/nawio-logo.svg" alt="Nawio" width={36} height={36} />
               <div className="leading-tight">
                 <span className="font-serif text-2xl tracking-wide text-gold">Nawio</span>
                 <p className="text-[10px] uppercase tracking-[0.28em] text-[#9fa9bc]">Nawigator formalny</p>
               </div>
             </div>
-            <nav className="hidden items-center gap-7 text-sm text-[#c3ccdd] md:flex">
+            <nav className="hidden items-center gap-9 text-sm text-[#c3ccdd] md:flex">
               <a href="#home" className="transition hover:text-white">
                 Strona główna
               </a>
@@ -119,7 +125,10 @@ export default function Home() {
                 FAQ
               </a>
             </nav>
-            <a href="https://app.nawio.pl" className="btn-ghost rounded-md px-4 py-2 text-sm font-medium">
+            <a
+              href="https://app.nawio.pl"
+              className="btn-ghost justify-self-end rounded-md px-4 py-2 text-sm font-medium"
+            >
               Zaloguj
             </a>
           </div>
@@ -185,12 +194,28 @@ export default function Home() {
                 {monthDays.map((day) => (
                   <div
                     key={day}
-                    className={`calendar-grid-cell ${highlightedDays.has(day) ? "is-highlight" : ""}`}
+                    className={`calendar-grid-cell ${
+                      day === todayDay ? "is-today" : dayCategories[day] ? `is-${dayCategories[day]}` : ""
+                    }`}
                     aria-label={`Dzień ${day}`}
                   >
                     {day}
                   </div>
                 ))}
+              </div>
+              <div className="grid gap-2 pt-1 text-xs text-[#b8c2d5] sm:grid-cols-2">
+                <p className="flex items-center gap-2">
+                  <span className="legend-dot bg-[#D4AF37]" /> Spółka
+                </p>
+                <p className="flex items-center gap-2">
+                  <span className="legend-dot bg-[#3B82F6]" /> ZUS
+                </p>
+                <p className="flex items-center gap-2">
+                  <span className="legend-dot bg-[#10B981]" /> US / VAT
+                </p>
+                <p className="flex items-center gap-2">
+                  <span className="legend-dot bg-[#8B5CF6]" /> KRS
+                </p>
               </div>
             </div>
             <aside className="rounded-xl border border-(--card-border) bg-[oklch(0.19_0.027_260/0.72)] p-4">

@@ -69,9 +69,9 @@ h3 {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(110deg, oklch(0.13 0.02 260 / 0.92) 18%, oklch(0.17 0.028 265 / 0.74) 52%, oklch(0.12 0.02 250 / 0.9) 100%),
-    radial-gradient(1100px 500px at 80% 16%, oklch(0.72 0.09 82 / 0.14), transparent 70%),
-    url("/hero-bg.svg");
+    linear-gradient(106deg, oklch(0.11 0.016 258 / 0.92) 16%, oklch(0.16 0.025 262 / 0.7) 52%, oklch(0.12 0.018 252 / 0.92) 100%),
+    radial-gradient(980px 460px at 84% 14%, oklch(0.72 0.09 82 / 0.14), transparent 72%),
+    url("https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1920");
   background-size: cover, auto, cover;
   background-position: center, center, center;
   filter: saturate(0.92) contrast(1.05);
@@ -121,11 +121,41 @@ h3 {
   font-size: 0.8rem;
 }
 
-.calendar-grid-cell.is-highlight {
-  background: linear-gradient(140deg, oklch(0.82 0.13 85 / 0.22), oklch(0.68 0.12 72 / 0.28));
-  color: #fff;
-  border-color: oklch(0.78 0.12 82 / 0.75);
-  box-shadow: 0 0 0 1px oklch(0.78 0.12 82 / 0.18);
+.calendar-grid-cell.is-spolka {
+  background: color-mix(in oklab, #D4AF37 26%, transparent);
+  border-color: color-mix(in oklab, #D4AF37 70%, #1f2a43);
+  color: #f7df99;
+}
+
+.calendar-grid-cell.is-zus {
+  background: color-mix(in oklab, #3B82F6 24%, transparent);
+  border-color: color-mix(in oklab, #3B82F6 70%, #1f2a43);
+  color: #bfdbfe;
+}
+
+.calendar-grid-cell.is-us {
+  background: color-mix(in oklab, #10B981 24%, transparent);
+  border-color: color-mix(in oklab, #10B981 70%, #1f2a43);
+  color: #a7f3d0;
+}
+
+.calendar-grid-cell.is-krs {
+  background: color-mix(in oklab, #8B5CF6 24%, transparent);
+  border-color: color-mix(in oklab, #8B5CF6 70%, #1f2a43);
+  color: #ddd6fe;
+}
+
+.calendar-grid-cell.is-today {
+  border-color: #D4AF37;
+  color: #D4AF37;
+  box-shadow: inset 0 0 0 1px #D4AF37;
+}
+
+.legend-dot {
+  height: 0.62rem;
+  width: 0.62rem;
+  border-radius: 999px;
+  display: inline-block;
 }
 
 .section-title {
