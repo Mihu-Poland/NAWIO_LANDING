@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --background: #1a1f2e;
+  --foreground: #f3f1ec;
+  --card: #252b3b;
+  --card-border: #2e3548;
+  --muted: #a6b0c3;
+  --gold: #d4a843;
+  --gold-soft: rgba(212, 168, 67, 0.2);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-cormorant);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-cormorant), serif;
+}
+
+.container-main {
+  width: min(1120px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.card-luxe {
+  border: 1px solid var(--card-border);
+  background: linear-gradient(180deg, #252b3b 0%, #1f2535 100%);
+  border-radius: 14px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.1;
+  color: #fff;
+}
+
+.section-subtitle {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.faq-item > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-item > summary::-webkit-details-marker {
+  display: none;
+}
