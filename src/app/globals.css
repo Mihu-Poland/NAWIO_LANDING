@@ -1,13 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: #1a1f2e;
-  --foreground: #f3f1ec;
-  --card: #252b3b;
-  --card-border: #2e3548;
-  --muted: #a6b0c3;
-  --gold: #d4a843;
-  --gold-soft: rgba(212, 168, 67, 0.2);
+  --radius: 0.8rem;
+  --background: oklch(0.16 0.025 260);
+  --foreground: oklch(0.95 0.012 85);
+  --card: oklch(0.21 0.028 260 / 0.82);
+  --card-border: oklch(0.32 0.025 260 / 0.58);
+  --muted: oklch(0.72 0.02 85);
+  --gold: oklch(0.78 0.12 82);
+  --gold-strong: oklch(0.7 0.14 70);
+  --gold-soft: oklch(0.78 0.12 82 / 0.12);
+  --shadow-luxe: 0 30px 80px -30px oklch(0 0 0 / 0.62), 0 0 0 1px oklch(0.78 0.12 82 / 0.08);
+  --shadow-soft: 0 14px 36px -20px oklch(0 0 0 / 0.52);
+  --gradient-luxe: linear-gradient(135deg, oklch(0.16 0.025 260) 0%, oklch(0.22 0.04 270) 60%, oklch(0.18 0.03 250) 100%);
+  --gradient-gold: linear-gradient(135deg, oklch(0.82 0.13 85) 0%, oklch(0.7 0.14 70) 100%);
 }
 
 @theme inline {
@@ -22,39 +28,47 @@
 }
 
 body {
-  background: var(--background);
+  background: var(--gradient-luxe);
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,
 h2,
 h3 {
   font-family: var(--font-cormorant), serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .container-main {
-  width: min(1120px, calc(100% - 2rem));
+  width: min(1120px, calc(100% - 1.75rem));
   margin-inline: auto;
 }
 
 .card-luxe {
   border: 1px solid var(--card-border);
-  background: linear-gradient(180deg, #252b3b 0%, #1f2535 100%);
-  border-radius: 14px;
+  background:
+    linear-gradient(180deg, oklch(0.24 0.03 262 / 0.75) 0%, oklch(0.19 0.028 258 / 0.86) 100%);
+  backdrop-filter: blur(12px);
+  border-radius: calc(var(--radius) + 0.2rem);
+  box-shadow: var(--shadow-soft);
 }
 
 .section-title {
-  font-size: clamp(2rem, 3vw, 3rem);
-  line-height: 1.1;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.05;
   color: #fff;
+  letter-spacing: -0.02em;
 }
 
 .section-subtitle {
   color: var(--muted);
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: clamp(0.98rem, 1.6vw, 1.08rem);
+  line-height: 1.75;
 }
 
 .faq-item > summary {
@@ -64,4 +78,34 @@ h3 {
 
 .faq-item > summary::-webkit-details-marker {
   display: none;
+}
+
+.text-gold {
+  color: var(--gold);
+}
+
+.btn-gold {
+  background: var(--gradient-gold);
+  color: oklch(0.16 0.025 260);
+  border: 1px solid oklch(0.78 0.12 82 / 0.35);
+  box-shadow: var(--shadow-soft);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.btn-gold:hover {
+  opacity: 0.93;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  border: 1px solid var(--card-border);
+  background: oklch(0.2 0.025 260 / 0.4);
+  color: oklch(0.92 0.013 85);
+  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.btn-ghost:hover {
+  border-color: oklch(0.78 0.12 82 / 0.6);
+  background: oklch(0.25 0.032 260 / 0.54);
+  color: #fff;
 }
