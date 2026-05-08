@@ -1,26 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Bot, CalendarClock, FileText, type LucideIcon } from "lucide-react";
 
 const pillars = [
   {
-    icon: "📅",
+    icon: CalendarClock,
     title: "Kalendarz formalny",
     description:
       "Pilnuje terminów KRS, ZUS i US. Przypomina o zgromadzeniach, sprawozdaniach i obowiązkach formalnych.",
   },
   {
-    icon: "📄",
+    icon: FileText,
     title: "Kreator dokumentów",
     description:
       "Uchwały, protokoły i umowy gotowe w kilka minut. Dane spółki podstawiają się automatycznie.",
   },
   {
-    icon: "🧭",
+    icon: Bot,
     title: "Asystent AI Nawio",
     description:
       "Nawigator formalny, który wskazuje co zrobić i kiedy. Bez prawniczego bełkotu, z podstawą prawną.",
   },
-];
+] satisfies Array<{ icon: LucideIcon; title: string; description: string }>;
 
 const audiences = [
   {
@@ -166,15 +167,18 @@ export default function Home() {
         <section className="section-flow space-y-6 pt-8">
           <h2 className="section-title text-center">Trzy filary Nawio</h2>
           <div className="grid gap-4 md:grid-cols-3">
-            {pillars.map((pillar) => (
+            {pillars.map((pillar) => {
+              const Icon = pillar.icon;
+              return (
               <article key={pillar.title} className="card-luxe border-(--card-border)/90 p-5">
                 <div className="mb-4 grid h-11 w-11 place-items-center rounded-md border border-(--gold)/55 bg-(--gold-soft) text-lg text-gold">
-                  {pillar.icon}
+                  <Icon className="h-5 w-5" />
                 </div>
                 <h3 className="font-serif text-3xl font-bold text-white">{pillar.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#bcc6d8]">{pillar.description}</p>
               </article>
-            ))}
+              );
+            })}
           </div>
         </section>
 
