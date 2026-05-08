@@ -3,16 +3,19 @@ import Link from "next/link";
 
 const pillars = [
   {
+    icon: "📅",
     title: "Kalendarz formalny",
     description:
       "Pilnuje terminów KRS, ZUS i US. Przypomina o zgromadzeniach, sprawozdaniach i obowiązkach formalnych.",
   },
   {
+    icon: "📄",
     title: "Kreator dokumentów",
     description:
       "Uchwały, protokoły i umowy gotowe w kilka minut. Dane spółki podstawiają się automatycznie.",
   },
   {
+    icon: "🧭",
     title: "Asystent AI Nawio",
     description:
       "Nawigator formalny, który wskazuje co zrobić i kiedy. Bez prawniczego bełkotu, z podstawą prawną.",
@@ -164,8 +167,11 @@ export default function Home() {
           <h2 className="section-title text-center">Trzy filary Nawio</h2>
           <div className="grid gap-4 md:grid-cols-3">
             {pillars.map((pillar) => (
-              <article key={pillar.title} className="card-luxe p-5">
-                <h3 className="text-3xl font-semibold text-white">{pillar.title}</h3>
+              <article key={pillar.title} className="card-luxe border-(--card-border)/90 p-5">
+                <div className="mb-4 grid h-11 w-11 place-items-center rounded-md border border-(--gold)/55 bg-(--gold-soft) text-lg text-gold">
+                  {pillar.icon}
+                </div>
+                <h3 className="font-serif text-3xl font-bold text-white">{pillar.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#bcc6d8]">{pillar.description}</p>
               </article>
             ))}
