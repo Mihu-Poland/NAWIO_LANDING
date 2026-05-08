@@ -110,7 +110,7 @@ export default function Home() {
             <div className="flex items-center gap-3 justify-self-start">
               <Image src="/nawio-logo.svg" alt="Nawio" width={36} height={36} />
               <div className="leading-tight">
-                <span className="font-serif text-2xl tracking-wide text-gold">Nawio</span>
+                <span className="font-serif text-2xl text-gold">Nawio</span>
                 <p className="text-[10px] uppercase tracking-[0.28em] text-[#9fa9bc]">Nawigator formalny</p>
               </div>
             </div>
@@ -127,7 +127,7 @@ export default function Home() {
             </nav>
             <a
               href="https://app.nawio.pl"
-              className="btn-ghost justify-self-end rounded-md px-4 py-2 text-sm font-medium"
+              className="btn-ghost justify-self-end rounded-md px-4 py-2 text-sm font-semibold"
             >
               Zaloguj
             </a>
@@ -165,7 +165,7 @@ export default function Home() {
           <div className="grid gap-4 md:grid-cols-3">
             {pillars.map((pillar) => (
               <article key={pillar.title} className="card-luxe p-5">
-                <h3 className="text-3xl text-white">{pillar.title}</h3>
+                <h3 className="text-3xl font-semibold text-white">{pillar.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#bcc6d8]">{pillar.description}</p>
               </article>
             ))}
@@ -180,7 +180,7 @@ export default function Home() {
           <div className="card-luxe grid gap-6 p-5 md:grid-cols-[1.45fr_1fr] md:p-7">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <p className="font-serif text-3xl text-white">Czerwiec 2026</p>
+                <p className="text-3xl font-semibold text-white">Czerwiec 2026</p>
                 <span className="rounded-full border border-(--gold)/55 bg-(--gold-soft) px-3 py-1 text-xs uppercase tracking-[0.18em] text-gold">
                   Widok miesięczny
                 </span>
@@ -219,7 +219,7 @@ export default function Home() {
               </div>
             </div>
             <aside className="rounded-xl border border-(--card-border) bg-[oklch(0.19_0.027_260/0.72)] p-4">
-              <h3 className="text-3xl text-white">Najbliższe terminy</h3>
+              <h3 className="text-3xl font-semibold text-white">Najbliższe terminy</h3>
               <div className="mt-4 space-y-3">
                 {upcomingDeadlines.map((item) => (
                   <article key={item.title} className="rounded-lg border border-(--card-border)/90 bg-[oklch(0.22_0.03_260/0.7)] p-3">
@@ -249,7 +249,7 @@ export default function Home() {
                     </span>
                   ) : null}
                 </div>
-                <h3 className="text-3xl text-white">{audience.title}</h3>
+                <h3 className="text-3xl font-semibold text-white">{audience.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#bcc6d8]">{audience.description}</p>
               </article>
             ))}
@@ -262,7 +262,7 @@ export default function Home() {
             {steps.map((step, idx) => (
               <article key={step.title} className="card-luxe p-5">
                 <p className="text-sm uppercase tracking-[0.2em] text-gold">Krok {idx + 1}</p>
-                <h3 className="mt-2 text-3xl text-white">
+                <h3 className="mt-2 text-3xl font-semibold text-white">
                   <span className="mr-2">{step.icon}</span>
                   {step.title}
                 </h3>
@@ -275,7 +275,7 @@ export default function Home() {
         <section id="cennik" className="section-flow space-y-6 pt-8">
           <h2 className="section-title text-center">Cennik</h2>
           <div className="mx-auto max-w-3xl rounded-xl border border-(--card-border) bg-[oklch(0.2_0.025_260/0.65)] p-6 text-center">
-            <p className="font-serif text-4xl text-white">Beta: 0 PLN</p>
+            <p className="text-4xl font-semibold text-white">Beta: 0 PLN</p>
             <p className="mt-2 text-sm text-[#b9c5d8]">
               W czasie bety korzystasz bezpłatnie. Finalny cennik udostępnimy przed startem wersji produkcyjnej.
             </p>
@@ -302,17 +302,17 @@ export default function Home() {
           <div className="grid gap-4 md:grid-cols-3">
             <article className="card-luxe p-4 text-center">
               <p className="text-2xl">🔒</p>
-              <h3 className="mt-2 text-3xl text-white">Dane w UE</h3>
+              <h3 className="mt-2 text-3xl font-semibold text-white">Dane w UE</h3>
               <p className="mt-2 text-sm text-[#bcc6d8]">Infrastruktura Supabase, serwery w Europie</p>
             </article>
             <article className="card-luxe p-4 text-center">
               <p className="text-2xl">📋</p>
-              <h3 className="mt-2 text-3xl text-white">RODO</h3>
+              <h3 className="mt-2 text-3xl font-semibold text-white">RODO</h3>
               <p className="mt-2 text-sm text-[#bcc6d8]">Przetwarzamy tylko dane niezbędne do działania aplikacji</p>
             </article>
             <article className="card-luxe p-4 text-center">
               <p className="text-2xl">⚖️</p>
-              <h3 className="mt-2 text-3xl text-white">Audyt prawny</h3>
+              <h3 className="mt-2 text-3xl font-semibold text-white">Audyt prawny</h3>
               <p className="mt-2 text-sm text-[#bcc6d8]">Szablony dokumentów weryfikowane przez kancelarię prawną</p>
             </article>
           </div>
