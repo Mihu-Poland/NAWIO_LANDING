@@ -84,58 +84,74 @@ const faqs = [
   },
 ];
 
+const weekDays = ["Pn", "Wt", "Śr", "Cz", "Pt", "Sb", "Nd"];
+const monthDays = Array.from({ length: 31 }, (_, i) => i + 1);
+const highlightedDays = new Set([4, 9, 14, 21, 28]);
+
+const upcomingDeadlines = [
+  { title: "Zgromadzenie wspólników", date: "09.06.2026", note: "Uchwała o podziale zysku" },
+  { title: "Składka ZUS", date: "10.06.2026", note: "Przypomnienie 48h przed terminem" },
+  { title: "VAT-7 do US", date: "25.06.2026", note: "Deklaracja i płatność VAT" },
+  { title: "Sprawozdanie do KRS", date: "30.06.2026", note: "Wysyłka eKRS + załączniki" },
+];
+
 export default function Home() {
   return (
     <div className="pb-16">
-      <header className="sticky top-0 z-50 border-b border-[var(--card-border)]/60 bg-[oklch(0.16_0.025_260_/_0.72)] backdrop-blur-xl">
-        <div className="container-main flex items-center justify-between py-5">
-        <div className="flex items-center gap-3">
-          <Image src="/nawio-logo.svg" alt="Nawio" width={36} height={36} />
-          <div className="leading-tight">
-            <span className="font-serif text-2xl tracking-wide text-gold">Nawio</span>
-            <p className="text-[10px] uppercase tracking-[0.28em] text-[#9fa9bc]">Nawigator korporacyjny</p>
-          </div>
-        </div>
-        <a
-          href="https://app.nawio.pl"
-          className="btn-ghost rounded-md px-4 py-2 text-sm font-medium"
-        >
-          Zaloguj
-        </a>
-        </div>
-      </header>
-
-      <main className="container-main space-y-16 pt-10">
-        <section className="card-luxe px-6 py-16 text-center md:px-12 md:py-20">
-          <p className="mx-auto mb-4 inline-flex items-center rounded-full border border-[var(--gold)]/40 bg-[var(--gold-soft)] px-4 py-1 text-xs uppercase tracking-[0.22em] text-gold">
-            Landing beta
-          </p>
-          <h1 className="mx-auto max-w-4xl text-5xl leading-[1.02] text-white md:text-7xl">
-            Prowadź spółkę z elegancją i spokojem
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl section-subtitle">
-            Nawio pilnuje terminów, tworzy dokumenty i prowadzi Cię przez formalności sp. z o.o. krok po kroku.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <a
-              href="https://app.nawio.pl/register"
-              className="btn-gold rounded-md px-6 py-3 text-sm font-semibold"
-            >
-              Rozpocznij
-            </a>
-            <a
-              href="https://app.nawio.pl/login"
-              className="btn-ghost rounded-md px-6 py-3 text-sm font-semibold"
-            >
-              Zobacz demo
+      <section id="home" className="hero-shell">
+        <header className="hero-content sticky top-0 z-50 border-b border-(--card-border)/45 bg-[oklch(0.15_0.022_260/0.55)] backdrop-blur-xl">
+          <div className="container-main flex items-center justify-between py-5">
+            <div className="flex items-center gap-3">
+              <Image src="/nawio-logo.svg" alt="Nawio" width={36} height={36} />
+              <div className="leading-tight">
+                <span className="font-serif text-2xl tracking-wide text-gold">Nawio</span>
+                <p className="text-[10px] uppercase tracking-[0.28em] text-[#9fa9bc]">Nawigator korporacyjny</p>
+              </div>
+            </div>
+            <nav className="hidden items-center gap-7 text-sm text-[#c3ccdd] md:flex">
+              <a href="#home" className="transition hover:text-white">
+                Strona główna
+              </a>
+              <a href="#cennik" className="transition hover:text-white">
+                Cennik
+              </a>
+              <a href="#faq" className="transition hover:text-white">
+                FAQ
+              </a>
+            </nav>
+            <a href="https://app.nawio.pl" className="btn-ghost rounded-md px-4 py-2 text-sm font-medium">
+              Zaloguj
             </a>
           </div>
-          <p className="mt-5 text-xs text-[#a6b0c3]">
-            Bezpłatny dostęp w fazie beta • Bez karty kredytowej • Dla sp. z o.o.
-          </p>
-        </section>
+        </header>
 
-        <section className="space-y-6">
+        <div className="hero-content container-main flex min-h-[calc(100svh-84px)] items-center py-14 md:py-20">
+          <div className="max-w-4xl">
+            <h1 className="max-w-4xl text-5xl leading-[1.02] text-white md:text-7xl">
+              Prowadź spółkę z elegancją
+              <br />
+              <span className="hero-gold">i precyzją kancelarii</span>
+            </h1>
+            <p className="mt-6 max-w-2xl section-subtitle">
+              Nawio pilnuje terminów, tworzy dokumenty i prowadzi Cię przez formalności sp. z o.o. krok po kroku.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href="https://app.nawio.pl/register" className="btn-gold rounded-md px-6 py-3 text-sm font-semibold">
+                Rozpocznij
+              </a>
+              <a href="https://app.nawio.pl/login" className="btn-ghost rounded-md px-6 py-3 text-sm font-semibold">
+                Zobacz demo
+              </a>
+            </div>
+            <p className="mt-5 text-xs text-[#a6b0c3]">
+              Bezpłatny dostęp w fazie beta • Bez karty kredytowej • Dla sp. z o.o.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <main className="container-main space-y-20 pt-10">
+        <section className="section-flow space-y-6 pt-8">
           <h2 className="section-title text-center">Trzy filary Nawio</h2>
           <div className="grid gap-4 md:grid-cols-3">
             {pillars.map((pillar) => (
@@ -147,7 +163,52 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="space-y-6">
+        <section className="section-flow space-y-6 pt-8">
+          <h2 className="section-title text-center">Podgląd kalendarza terminów</h2>
+          <p className="section-subtitle mx-auto max-w-3xl text-center">
+            Mockup widoku miesięcznego z najbliższymi obowiązkami formalnymi Twojej spółki.
+          </p>
+          <div className="card-luxe grid gap-6 p-5 md:grid-cols-[1.45fr_1fr] md:p-7">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <p className="font-serif text-3xl text-white">Czerwiec 2026</p>
+                <span className="rounded-full border border-(--gold)/55 bg-(--gold-soft) px-3 py-1 text-xs uppercase tracking-[0.18em] text-gold">
+                  Widok miesięczny
+                </span>
+              </div>
+              <div className="grid grid-cols-7 gap-2 text-center text-xs uppercase tracking-[0.12em] text-[#95a4bf]">
+                {weekDays.map((day) => (
+                  <span key={day}>{day}</span>
+                ))}
+              </div>
+              <div className="grid grid-cols-7 gap-2">
+                {monthDays.map((day) => (
+                  <div
+                    key={day}
+                    className={`calendar-grid-cell ${highlightedDays.has(day) ? "is-highlight" : ""}`}
+                    aria-label={`Dzień ${day}`}
+                  >
+                    {day}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <aside className="rounded-xl border border-(--card-border) bg-[oklch(0.19_0.027_260/0.72)] p-4">
+              <h3 className="text-3xl text-white">Najbliższe terminy</h3>
+              <div className="mt-4 space-y-3">
+                {upcomingDeadlines.map((item) => (
+                  <article key={item.title} className="rounded-lg border border-(--card-border)/90 bg-[oklch(0.22_0.03_260/0.7)] p-3">
+                    <p className="text-sm font-semibold text-gold">{item.date}</p>
+                    <p className="mt-1 text-base text-white">{item.title}</p>
+                    <p className="mt-1 text-xs text-[#aeb8cb]">{item.note}</p>
+                  </article>
+                ))}
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section className="section-flow space-y-6 pt-8">
           <h2 className="section-title text-center">Dla kogo jest Nawio?</h2>
           <p className="section-subtitle mx-auto max-w-3xl text-center">
             Jeśli prowadzisz sp. z o.o. bez prawnika w kieszeni — to jest dla Ciebie.
@@ -158,7 +219,7 @@ export default function Home() {
                 <div className="mb-3 flex items-center justify-between">
                   <span className="text-2xl">{audience.emoji}</span>
                   {audience.badge ? (
-                    <span className="rounded-full border border-[var(--gold)]/60 bg-[var(--gold-soft)] px-2 py-0.5 text-[11px] text-gold">
+                    <span className="rounded-full border border-(--gold)/60 bg-(--gold-soft) px-2 py-0.5 text-[11px] text-gold">
                       {audience.badge}
                     </span>
                   ) : null}
@@ -170,7 +231,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="space-y-6">
+        <section className="section-flow space-y-6 pt-8">
           <h2 className="section-title text-center">Trzy kroki do porządku w spółce</h2>
           <div className="grid gap-4 md:grid-cols-3">
             {steps.map((step, idx) => (
@@ -186,7 +247,17 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="space-y-6">
+        <section id="cennik" className="section-flow space-y-6 pt-8">
+          <h2 className="section-title text-center">Cennik</h2>
+          <div className="mx-auto max-w-3xl rounded-xl border border-(--card-border) bg-[oklch(0.2_0.025_260/0.65)] p-6 text-center">
+            <p className="font-serif text-4xl text-white">Beta: 0 PLN</p>
+            <p className="mt-2 text-sm text-[#b9c5d8]">
+              W czasie bety korzystasz bezpłatnie. Finalny cennik udostępnimy przed startem wersji produkcyjnej.
+            </p>
+          </div>
+        </section>
+
+        <section id="faq" className="section-flow space-y-6 pt-8">
           <h2 className="section-title text-center">Najczęstsze pytania</h2>
           <div className="space-y-3">
             {faqs.map((item) => (
@@ -201,7 +272,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="space-y-4">
+        <section className="section-flow space-y-4 pt-8">
           <h2 className="section-title text-center">Bezpieczeństwo i zgodność</h2>
           <div className="grid gap-4 md:grid-cols-3">
             <article className="card-luxe p-4 text-center">
