@@ -14,12 +14,12 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Nawio — Nawigator dokumentów korporacyjnych dla sp. z o.o.",
+  title: "Nawio — Nawigator dokumentów dla sp. z o.o.",
   description:
     "Pilnuj terminów KRS, ZUS i US. Generuj uchwały, protokoły i umowy. Asystent AI dla właścicieli sp. z o.o. Bezpłatnie w fazie beta.",
   metadataBase: new URL("https://nawio.pl"),
   openGraph: {
-    title: "Nawio — Nawigator korporacyjny dla sp. z o.o.",
+    title: "Nawio — Nawigator formalny dla sp. z o.o.",
     description: "Terminy, dokumenty i asystent AI w jednym miejscu. Dla właścicieli sp. z o.o.",
     url: "https://nawio.pl",
     siteName: "Nawio",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Nawio — Nawigator dokumentów korporacyjnych",
+        alt: "Nawio — Nawigator dokumentów",
       },
     ],
     locale: "pl_PL",

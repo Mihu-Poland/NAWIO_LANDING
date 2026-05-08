@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const pillars = [
   {
-    title: "Kalendarz korporacyjny",
+    title: "Kalendarz formalny",
     description:
       "Pilnuje terminów KRS, ZUS i US. Przypomina o zgromadzeniach, sprawozdaniach i obowiązkach formalnych.",
   },
@@ -15,7 +15,7 @@ const pillars = [
   {
     title: "Asystent AI Nawio",
     description:
-      "Nawigator korporacyjny, który wskazuje co zrobić i kiedy. Bez prawniczego bełkotu, z podstawą prawną.",
+      "Nawigator formalny, który wskazuje co zrobić i kiedy. Bez prawniczego bełkotu, z podstawą prawną.",
   },
 ];
 
@@ -64,7 +64,7 @@ const steps = [
 const faqs = [
   {
     q: "Czy Nawio to kancelaria prawna?",
-    a: "Nie. Nawio to nawigator korporacyjny — narzędzie informacyjne które pomaga zrozumieć obowiązki formalne spółki. Nie udzielamy porad prawnych ani podatkowych. Zawsze zalecamy weryfikację dokumentów przez radcę prawnego.",
+    a: "Nie. Nawio to nawigator formalny — narzędzie informacyjne które pomaga zrozumieć obowiązki formalne spółki. Nie udzielamy porad prawnych ani podatkowych. Zawsze zalecamy weryfikację dokumentów przez radcę prawnego.",
   },
   {
     q: "Czy dokumenty generowane przez Nawio mają moc prawną?",
@@ -105,7 +105,7 @@ export default function Home() {
               <Image src="/nawio-logo.svg" alt="Nawio" width={36} height={36} />
               <div className="leading-tight">
                 <span className="font-serif text-2xl tracking-wide text-gold">Nawio</span>
-                <p className="text-[10px] uppercase tracking-[0.28em] text-[#9fa9bc]">Nawigator korporacyjny</p>
+                <p className="text-[10px] uppercase tracking-[0.28em] text-[#9fa9bc]">Nawigator formalny</p>
               </div>
             </div>
             <nav className="hidden items-center gap-7 text-sm text-[#c3ccdd] md:flex">
@@ -301,7 +301,7 @@ export default function Home() {
         <div className="card-luxe grid gap-8 px-6 py-8 md:grid-cols-4">
           <div className="space-y-3">
             <Image src="/nawio-logo.svg" alt="Nawio" width={34} height={34} />
-            <p className="text-sm text-[#dbe3f1]">Nawio — nawigator dokumentów korporacyjnych dla sp. z o.o.</p>
+            <p className="text-sm text-[#dbe3f1]">Nawio — nawigator dokumentów dla sp. z o.o.</p>
             <p className="text-xs text-[#93a0ba]">© 2026 Nawio</p>
           </div>
 
