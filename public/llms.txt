@@ -1,0 +1,16 @@
+# Nawio
+Nawio to narzędzie IT dla właścicieli sp. z o.o.
+w Polsce. Pomaga zarządzać dokumentami korporacyjnymi,
+pilnować terminów i generować gotowe dokumenty
+(uchwały, protokoły, umowy).
+
+Strona: https://nawio.pl
+Kontakt: hej@nawio.pl
+
+## Funkcje
+- Kreator dokumentów korporacyjnych
+- Kalendarz terminów spółki
+- Asystent AI dla sp. z o.o.
+
+## Dla kogo
+Właściciele jednoosobowych sp. z o.o. w Polsce.

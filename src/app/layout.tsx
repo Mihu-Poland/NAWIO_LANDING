@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
+import Script from "next/script";
 import CookieBanner from "@/components/legal/CookieBanner";
 import "./globals.css";
 
@@ -50,6 +51,24 @@ export default function RootLayout({
       lang="pl"
       className={`${inter.variable} ${cormorant.variable} h-full antialiased`}
     >
+      <head>
+        <meta
+          name="google-site-verification"
+          content="jsIgKEsPBt6sPBC7t1QaRTLFFxTasHibTmcGJIAslSE"
+        />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-FL0GPF09PR"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-FL0GPF09PR');
+          `}
+        </Script>
+      </head>
       <body className="min-h-full flex flex-col">
         {children}
         <CookieBanner />
