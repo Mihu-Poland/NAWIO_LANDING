@@ -330,7 +330,7 @@ export default function Home() {
       </main>
 
       <footer className="container-main mt-16">
-        <p className="mb-5 text-center text-xs text-[#aab6cb]">
+        <p id="disclaimer" className="mb-5 text-center text-xs text-[#aab6cb]">
           Nawio nie jest kancelarią prawną i nie świadczy usług doradztwa prawnego ani podatkowego.
         </p>
         <div className="card-luxe grid gap-8 px-6 py-8 md:grid-cols-4">
@@ -356,7 +356,9 @@ export default function Home() {
             <Link href="/regulamin" className="block text-[#bcc6d8] hover:text-white">
               Regulamin
             </Link>
-            <p className="text-[#bcc6d8]">Disclaimer (nie jesteśmy kancelarią)</p>
+            <a href="/#disclaimer" className="block text-[#bcc6d8] hover:text-white">
+              Disclaimer (nie jesteśmy kancelarią)
+            </a>
           </div>
 
           <div className="space-y-2 text-sm">
