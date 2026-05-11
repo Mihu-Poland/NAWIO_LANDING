@@ -159,10 +159,22 @@ export default function Home() {
         {JSON.stringify(faqSchema)}
       </Script>
       <section id="home" className="hero-shell">
+        <div className="absolute inset-0">
+          <Image
+            src="/hero.jpg"
+            alt=""
+            fill
+            priority
+            loading="eager"
+            sizes="100vw"
+            className="object-cover saturate-[0.92] contrast-105"
+          />
+          <div className="hero-overlay" />
+        </div>
         <header className="hero-content sticky top-0 z-50 border-b border-(--card-border)/50 bg-[oklch(0.14_0.02_258/0.62)] backdrop-blur-2xl">
           <div className="container-main grid grid-cols-[1fr_auto_1fr] items-center py-4">
             <div className="flex items-center gap-3 justify-self-start">
-              <Image src="/nawio-logo.svg" alt="Nawio" width={36} height={36} priority />
+              <Image src="/nawio-logo.svg" alt="Nawio" width={34} height={34} priority loading="eager" />
               <div className="leading-tight">
                 <span className="font-serif text-2xl text-gold">Nawio</span>
                 <p className="text-[10px] uppercase tracking-[0.28em] text-[#9fa9bc]">PROWADZI. NIE RADZI.</p>
