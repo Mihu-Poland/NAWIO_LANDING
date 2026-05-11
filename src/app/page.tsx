@@ -174,9 +174,17 @@ export default function Home() {
                 Zobacz demo
               </a>
             </div>
-            <p className="mt-5 text-xs text-[#a6b0c3]">
-              Bezpłatny dostęp w fazie beta • Bez karty kredytowej • Dla sp. z o.o.
-            </p>
+            <div className="mt-5 flex flex-wrap items-center justify-center text-sm text-[#a6b0c3]">
+              <span>
+                <span className="text-[#D4AF37]">✓</span> Bez karty kredytowej
+              </span>
+              <span className="mx-6">
+                <span className="text-[#D4AF37]">✓</span> Dla sp. z o.o.
+              </span>
+              <span>
+                <span className="text-[#D4AF37]">✓</span> Działa jako aplikacja mobilna
+              </span>
+            </div>
           </div>
         </div>
       </section>
