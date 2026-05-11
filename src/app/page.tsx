@@ -1,6 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Bot, CalendarClock, FileText, type LucideIcon } from "lucide-react";
+import {
+  BadgeCheck,
+  Bot,
+  BriefcaseBusiness,
+  Building2,
+  CalendarClock,
+  CalendarDays,
+  FilePlus2,
+  FileText,
+  Scale,
+  ShieldCheck,
+  Users,
+  type LucideIcon,
+} from "lucide-react";
 import ContactSection from "@/components/contact/ContactSection";
 import CookieSettingsLink from "@/components/legal/CookieSettingsLink";
 
@@ -27,45 +40,45 @@ const pillars = [
 
 const audiences = [
   {
-    emoji: "🏢",
+    icon: Building2,
     title: "Właściciel jednoosobowej sp. z o.o.",
     description:
       "Prowadzisz spółkę sam. Nie chcesz płacić 300 zł za każde pytanie do prawnika. Nawio pilnuje terminów i generuje dokumenty za Ciebie.",
     badge: null,
   },
   {
-    emoji: "👥",
+    icon: Users,
     title: "Mała spółka (2-5 wspólników)",
     description:
       "Macie zarząd, wspólników, uchwały. Nawio trzyma wszystko w jednym miejscu i przypomina kiedy zwołać zgromadzenie.",
     badge: null,
   },
   {
-    emoji: "📊",
+    icon: BriefcaseBusiness,
     title: "Biuro rachunkowe",
     description:
       "Obsługujesz kilkanaście spółek? Nawio w wersji dla biur pozwoli zarządzać nimi z jednego panelu.",
     badge: "Wkrótce",
   },
-];
+] satisfies Array<{ icon: LucideIcon; title: string; description: string; badge: string | null }>;
 
 const steps = [
   {
-    icon: "➕",
+    icon: FilePlus2,
     title: "Dodaj spółkę",
     description: "Wpisz NIP, uzupełnij dane. Nawio pobiera co może z rejestrów publicznych.",
   },
   {
-    icon: "📅",
+    icon: CalendarDays,
     title: "Śledź terminy",
     description: "Kalendarz automatycznie wypełnia się kluczowymi datami: ZUS, US, KRS, zgromadzenia.",
   },
   {
-    icon: "📄",
+    icon: FileText,
     title: "Generuj dokumenty",
     description: "Wybierz dokument, sprawdź dane, pobierz PDF. Gotowe w 3 minuty.",
   },
-];
+] satisfies Array<{ icon: LucideIcon; title: string; description: string }>;
 
 const faqs = [
   {
@@ -179,7 +192,7 @@ export default function Home() {
                 <div className="mb-4 grid h-11 w-11 place-items-center rounded-md border border-(--gold)/55 bg-(--gold-soft) text-lg text-gold">
                   <Icon className="h-5 w-5" />
                 </div>
-                <h3 className="font-serif text-3xl font-bold text-white">{pillar.title}</h3>
+                <h3 className="text-[20px] font-semibold text-white">{pillar.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#bcc6d8]">{pillar.description}</p>
               </article>
               );
@@ -254,36 +267,46 @@ export default function Home() {
             Jeśli prowadzisz sp. z o.o. bez prawnika w kieszeni — to jest dla Ciebie.
           </p>
           <div className="grid gap-4 md:grid-cols-3">
-            {audiences.map((audience) => (
+            {audiences.map((audience) => {
+              const Icon = audience.icon;
+              return (
               <article key={audience.title} className="card-luxe p-5">
                 <div className="mb-3 flex items-center justify-between">
-                  <span className="text-2xl">{audience.emoji}</span>
+                  <span className="grid h-10 w-10 place-items-center rounded-md border border-(--gold)/55 bg-(--gold-soft) text-gold">
+                    <Icon className="h-5 w-5" />
+                  </span>
                   {audience.badge ? (
                     <span className="rounded-full border border-(--gold)/60 bg-(--gold-soft) px-2 py-0.5 text-[11px] text-gold">
                       {audience.badge}
                     </span>
                   ) : null}
                 </div>
-                <h3 className="text-3xl font-semibold text-white">{audience.title}</h3>
+                <h3 className="text-[20px] font-semibold text-white">{audience.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#bcc6d8]">{audience.description}</p>
               </article>
-            ))}
+              );
+            })}
           </div>
         </section>
 
         <section className="section-flow space-y-6 pt-8">
           <h2 className="section-title text-center">Trzy kroki do porządku w spółce</h2>
           <div className="grid gap-4 md:grid-cols-3">
-            {steps.map((step, idx) => (
+            {steps.map((step, idx) => {
+              const Icon = step.icon;
+              return (
               <article key={step.title} className="card-luxe p-5">
                 <p className="text-sm uppercase tracking-[0.2em] text-gold">Krok {idx + 1}</p>
-                <h3 className="mt-2 text-3xl font-semibold text-white">
-                  <span className="mr-2">{step.icon}</span>
+                <h3 className="mt-2 flex items-center gap-2 text-[20px] font-semibold text-white">
+                  <span className="grid h-8 w-8 place-items-center rounded-md border border-(--gold)/55 bg-(--gold-soft) text-gold">
+                    <Icon className="h-4 w-4" />
+                  </span>
                   {step.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#bcc6d8]">{step.description}</p>
               </article>
-            ))}
+              );
+            })}
           </div>
         </section>
 
@@ -316,18 +339,24 @@ export default function Home() {
           <h2 className="section-title text-center">Bezpieczeństwo i zgodność</h2>
           <div className="grid gap-4 md:grid-cols-3">
             <article className="card-luxe p-4 text-center">
-              <p className="text-2xl">🔒</p>
-              <h3 className="mt-2 text-3xl font-semibold text-white">Dane w UE</h3>
+              <div className="mx-auto grid h-10 w-10 place-items-center rounded-md border border-(--gold)/55 bg-(--gold-soft) text-gold">
+                <ShieldCheck className="h-5 w-5" />
+              </div>
+              <h3 className="mt-2 text-[20px] font-semibold text-white">Dane w UE</h3>
               <p className="mt-2 text-sm text-[#bcc6d8]">Infrastruktura Supabase, serwery w Europie</p>
             </article>
             <article className="card-luxe p-4 text-center">
-              <p className="text-2xl">📋</p>
-              <h3 className="mt-2 text-3xl font-semibold text-white">RODO</h3>
+              <div className="mx-auto grid h-10 w-10 place-items-center rounded-md border border-(--gold)/55 bg-(--gold-soft) text-gold">
+                <BadgeCheck className="h-5 w-5" />
+              </div>
+              <h3 className="mt-2 text-[20px] font-semibold text-white">RODO</h3>
               <p className="mt-2 text-sm text-[#bcc6d8]">Przetwarzamy tylko dane niezbędne do działania aplikacji</p>
             </article>
             <article className="card-luxe p-4 text-center">
-              <p className="text-2xl">⚖️</p>
-              <h3 className="mt-2 text-3xl font-semibold text-white">Audyt prawny</h3>
+              <div className="mx-auto grid h-10 w-10 place-items-center rounded-md border border-(--gold)/55 bg-(--gold-soft) text-gold">
+                <Scale className="h-5 w-5" />
+              </div>
+              <h3 className="mt-2 text-[20px] font-semibold text-white">Audyt prawny</h3>
               <p className="mt-2 text-sm text-[#bcc6d8]">Szablony dokumentów weryfikowane przez kancelarię prawną</p>
             </article>
           </div>
