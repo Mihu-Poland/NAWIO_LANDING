@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import {
   BadgeCheck,
   Bot,
@@ -121,8 +122,40 @@ const upcomingDeadlines = [
 ];
 
 export default function Home() {
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Nawio — Wszystko czego potrzebuje Twoja spółka w jednym miejscu",
+    description: "Gotowe dokumenty, kontrolowane terminy, spokój właściciela sp. z o.o.",
+    url: "https://nawio.pl",
+    inLanguage: "pl",
+    publisher: {
+      "@type": "Organization",
+      name: "Nawio",
+    },
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    })),
+  };
+
   return (
     <div className="pb-16">
+      <Script id="schema-webpage" type="application/ld+json">
+        {JSON.stringify(webPageSchema)}
+      </Script>
+      <Script id="schema-faq" type="application/ld+json">
+        {JSON.stringify(faqSchema)}
+      </Script>
       <section id="home" className="hero-shell">
         <header className="hero-content sticky top-0 z-50 border-b border-(--card-border)/50 bg-[oklch(0.14_0.02_258/0.62)] backdrop-blur-2xl">
           <div className="container-main grid grid-cols-[1fr_auto_1fr] items-center py-4">
