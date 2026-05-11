@@ -172,7 +172,7 @@ export default function Home() {
           <div className="hero-overlay" />
         </div>
         <header className="hero-content sticky top-0 z-50 border-b border-(--card-border)/50 bg-[oklch(0.14_0.02_258/0.62)] backdrop-blur-2xl">
-          <div className="container-main grid grid-cols-[1fr_auto_1fr] items-center py-4">
+          <div className="container-main grid grid-cols-[1fr_auto] items-center py-4 md:grid-cols-[1fr_auto_1fr]">
             <div className="flex items-center gap-3 justify-self-start">
               <Image src="/nawio-logo.svg" alt="Nawio" width={34} height={34} priority loading="eager" />
               <div className="leading-tight">
