@@ -62,7 +62,6 @@ export default function CookieBanner() {
 
   useEffect(() => {
     const savedDecision = readSavedSettings();
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsVisible(savedDecision === null);
     if (savedDecision) {
       setSettings(savedDecision);

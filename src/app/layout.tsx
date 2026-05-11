@@ -7,6 +7,7 @@ import "./globals.css";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600"],
   display: "swap",
   preload: true,
 });
@@ -15,6 +16,7 @@ const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin", "latin-ext"],
   weight: ["400", "700"],
+  style: ["normal", "italic"],
   display: "swap",
   preload: true,
 });
@@ -103,7 +105,7 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          href="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1920"
+          href="/hero.jpg"
           fetchPriority="high"
         />
         <meta
