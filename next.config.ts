@@ -1,9 +1,7 @@
 import type { NextConfig } from "next";
 
-const nextConfig = {
-  experimental: {
-    browsersListForSwc: true,
-  },
-} as NextConfig;
+const nextConfig: NextConfig = {
+  /* config options here */
+};
 
 export default nextConfig;
