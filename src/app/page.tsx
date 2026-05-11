@@ -217,8 +217,8 @@ export default function Home() {
               <a href="https://app.nawio.pl/register" className="btn-gold rounded-md px-6 py-3 text-sm font-semibold">
                 Rozpocznij
               </a>
-              <a href="https://app.nawio.pl/login" className="btn-ghost rounded-md px-6 py-3 text-sm font-semibold">
-                Zobacz demo
+              <a href="#jak-to-dziala" className="btn-ghost rounded-md px-6 py-3 text-sm font-semibold">
+                Zobacz jak działa
               </a>
             </div>
             <div className="mt-5 flex flex-wrap items-center text-sm text-[#a6b0c3]">
@@ -344,7 +344,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section-flow space-y-6 pt-8">
+        <section id="jak-to-dziala" className="section-flow space-y-6 pt-8">
           <h2 className="section-title text-center">Trzy kroki do porządku w spółce</h2>
           <div className="grid gap-4 md:grid-cols-3">
             {steps.map((step, idx) => {
