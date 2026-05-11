@@ -103,7 +103,7 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          href="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1920"
+          href="/hero.jpg"
           fetchPriority="high"
         />
         <meta
