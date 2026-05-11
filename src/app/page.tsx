@@ -43,7 +43,7 @@ const audiences = [
     icon: Building2,
     title: "Właściciel jednoosobowej sp. z o.o.",
     description:
-      "Prowadzisz spółkę sam. Nie chcesz płacić 300 zł za każde pytanie do prawnika. Nawio pilnuje terminów i generuje dokumenty za Ciebie.",
+      "Prowadzisz spółkę sam. Nie chcesz płacić 300 zł za każde pytanie do prawnika. Nawio kontroluje terminy i generuje dokumenty za Ciebie.",
     badge: null,
   },
   {
@@ -164,7 +164,7 @@ export default function Home() {
               <span className="hero-gold">Twoja spółka — w jednym miejscu</span>
             </h1>
             <p className="mt-6 max-w-2xl section-subtitle">
-              Gotowe dokumenty, pilnowane terminy, spokój właściciela.
+              Gotowe dokumenty, kontrolowane terminy, spokój właściciela.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="https://app.nawio.pl/register" className="btn-gold rounded-md px-6 py-3 text-sm font-semibold">

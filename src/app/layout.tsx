@@ -18,11 +18,11 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "Nawio · Prowadzi. Nie radzi.",
   description:
-    "Gotowe dokumenty, pilnowane terminy, spokój właściciela sp. z o.o. — w jednym miejscu.",
+    "Gotowe dokumenty, kontrolowane terminy, spokój właściciela sp. z o.o. — w jednym miejscu.",
   metadataBase: new URL("https://nawio.pl"),
   openGraph: {
     title: "Nawio · Prowadzi. Nie radzi.",
-    description: "Gotowe dokumenty, pilnowane terminy, spokój właściciela sp. z o.o. — w jednym miejscu.",
+    description: "Gotowe dokumenty, kontrolowane terminy, spokój właściciela sp. z o.o. — w jednym miejscu.",
     url: "https://nawio.pl",
     siteName: "Nawio",
     images: [
