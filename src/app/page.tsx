@@ -42,16 +42,16 @@ const pillars = [
   },
 ] satisfies Array<{ icon: LucideIcon; title: string; description: string }>;
 
-/** Wprowadzenie pod nagłówkiem „Dla kogo jest Nawio?” */
+/** Tekst pod nagłówkiem „Dla kogo jest Nawio?” */
 const audienceSectionIntro =
-  "Prowadzisz spółkę. Nawio pilnuje terminów, generuje dokumenty i podpowiada co zrobić — żebyś do prawnika szedł tylko wtedy, gdy naprawdę trzeba.";
+  "Dla każdego, kto woli pilnować biznesu niż terminów w urzędach.";
 
 const audiences = [
   {
     icon: Building2,
-    title: "Właściciel jednoosobowej sp. z o.o.",
+    title: "Właściciel sp. z o.o.",
     description:
-      "Jesteś na etapie, gdy każda formalność spada na Ciebie. Nawio porządkuje terminy KRS, ZUS i US oraz dokumenty w jednym miejscu — bez opłaty za każde drobne pytanie do prawnika.",
+      "Prowadzisz spółkę sam. Nawio pilnuje terminów, generuje dokumenty i podpowiada co zrobić — żebyś do prawnika szedł tylko wtedy, gdy naprawdę trzeba.",
     badge: null,
   },
   {
