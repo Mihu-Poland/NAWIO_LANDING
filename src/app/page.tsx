@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Bot, CalendarClock, FileText, type LucideIcon } from "lucide-react";
 import ContactSection from "@/components/contact/ContactSection";
+import CookieSettingsLink from "@/components/legal/CookieSettingsLink";
 
 const pillars = [
   {
@@ -365,6 +366,7 @@ export default function Home() {
             <Link href="/#disclaimer" className="block text-[#bcc6d8] hover:text-white">
               Disclaimer (nie jesteśmy kancelarią)
             </Link>
+            <CookieSettingsLink />
           </div>
 
           <div className="space-y-2 text-sm">

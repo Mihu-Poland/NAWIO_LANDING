@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
-import dynamic from "next/dynamic";
+import CookieBanner from "@/components/legal/CookieBanner";
 import "./globals.css";
-
-const CookieBanner = dynamic(() => import("@/components/legal/CookieBanner"), { ssr: false });
 
 const inter = Inter({
   variable: "--font-inter",
