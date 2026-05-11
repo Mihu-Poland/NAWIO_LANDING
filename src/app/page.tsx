@@ -34,7 +34,7 @@ const pillars = [
     icon: Bot,
     title: "Asystent AI Nawio",
     description:
-      "Nawigator formalny, który wskazuje co zrobić i kiedy. Bez prawniczego bełkotu, z podstawą prawną.",
+      "Asystent, który wskazuje co zrobić i kiedy. Bez prawniczego bełkotu, z podstawą prawną.",
   },
 ] satisfies Array<{ icon: LucideIcon; title: string; description: string }>;
 
@@ -130,7 +130,7 @@ export default function Home() {
               <Image src="/nawio-logo.svg" alt="Nawio" width={36} height={36} />
               <div className="leading-tight">
                 <span className="font-serif text-2xl text-gold">Nawio</span>
-                <p className="text-[10px] uppercase tracking-[0.28em] text-[#9fa9bc]">Nawigator formalny</p>
+                <p className="text-[10px] uppercase tracking-[0.28em] text-[#9fa9bc]">PROWADZI. NIE RADZI.</p>
               </div>
             </div>
             <nav className="hidden items-center gap-9 text-sm text-[#c3ccdd] md:flex">
@@ -159,12 +159,12 @@ export default function Home() {
         <div className="hero-content container-main flex min-h-[calc(100svh-84px)] items-center py-14 md:py-20">
           <div className="max-w-4xl">
             <h1 className="max-w-4xl text-5xl leading-[1.02] text-white md:text-7xl">
-              Prowadź spółkę z elegancją
+              Wszystko czego potrzebuje
               <br />
-              <span className="hero-gold">i precyzją kancelarii</span>
+              <span className="hero-gold">Twoja spółka — w jednym miejscu</span>
             </h1>
             <p className="mt-6 max-w-2xl section-subtitle">
-              Nawio pilnuje terminów, tworzy dokumenty i prowadzi Cię przez formalności sp. z o.o. krok po kroku.
+              Gotowe dokumenty, pilnowane terminy, spokój właściciela.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="https://app.nawio.pl/register" className="btn-gold rounded-md px-6 py-3 text-sm font-semibold">
@@ -369,7 +369,7 @@ export default function Home() {
         <div className="card-luxe grid gap-8 px-6 py-8 md:grid-cols-3">
           <div className="space-y-3">
             <Image src="/nawio-logo.svg" alt="Nawio" width={34} height={34} />
-            <p className="text-sm text-[#dbe3f1]">Nawio — nawigator dokumentów dla sp. z o.o.</p>
+            <p className="text-[10px] uppercase tracking-[0.28em] text-[#9fa9bc]">PROWADZI. NIE RADZI.</p>
           </div>
 
           <div className="space-y-2 text-sm">
