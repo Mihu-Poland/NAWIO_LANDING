@@ -66,7 +66,7 @@ const audiences = [
     title: "Biuro rachunkowe",
     description:
       "Obsługujesz kilkanaście spółek? Nawio w wersji dla biur pozwoli zarządzać nimi z jednego panelu.",
-    badge: "Wkrótce",
+    badge: null,
   },
 ] satisfies Array<{ icon: LucideIcon; title: string; description: string; badge: string | null }>;
 
