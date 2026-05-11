@@ -107,8 +107,8 @@ export default function CookieBanner() {
   }
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 max-h-[20svh] overflow-y-auto px-4 pb-4 md:px-6">
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 rounded-xl border border-(--card-border) bg-[oklch(0.18_0.028_260/0.94)] p-4 shadow-[0_20px_60px_-25px_rgba(0,0,0,0.8)] backdrop-blur-xl">
+    <div className="fixed inset-x-0 bottom-0 z-50 px-4 pb-4 md:px-6">
+      <div className="mx-auto flex max-h-[calc(100svh-1rem)] w-full max-w-5xl flex-col gap-3 overflow-y-auto rounded-xl border border-(--card-border) bg-[oklch(0.18_0.028_260/0.94)] p-4 shadow-[0_20px_60px_-25px_rgba(0,0,0,0.8)] backdrop-blur-xl">
         <p className="text-sm leading-relaxed text-[#d2dbee]">
           Używamy plików cookies niezbędnych do działania strony oraz opcjonalnych do analityki i ulepszeń.
           Szczegóły znajdziesz w{" "}
