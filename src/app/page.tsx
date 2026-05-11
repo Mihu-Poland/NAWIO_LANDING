@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Bot, CalendarClock, FileText, type LucideIcon } from "lucide-react";
+import ContactSection from "@/components/contact/ContactSection";
 
 const pillars = [
   {
@@ -127,6 +128,9 @@ export default function Home() {
               </a>
               <a href="#faq" className="transition hover:text-white">
                 FAQ
+              </a>
+              <a href="#kontakt" className="transition hover:text-white">
+                Kontakt
               </a>
             </nav>
             <a
@@ -327,6 +331,8 @@ export default function Home() {
             </article>
           </div>
         </section>
+
+        <ContactSection />
       </main>
 
       <footer className="container-main mt-16">
@@ -356,9 +362,9 @@ export default function Home() {
             <Link href="/regulamin" className="block text-[#bcc6d8] hover:text-white">
               Regulamin
             </Link>
-            <a href="/#disclaimer" className="block text-[#bcc6d8] hover:text-white">
+            <Link href="/#disclaimer" className="block text-[#bcc6d8] hover:text-white">
               Disclaimer (nie jesteśmy kancelarią)
-            </a>
+            </Link>
           </div>
 
           <div className="space-y-2 text-sm">

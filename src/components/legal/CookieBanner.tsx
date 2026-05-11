@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const COOKIE_CONSENT_KEY = "nawio_cookie_consent";
 
@@ -13,12 +13,7 @@ type CookieConsent = "all" | "essential";
  * @author Mihu
  */
 export default function CookieBanner() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const savedDecision = window.localStorage.getItem(COOKIE_CONSENT_KEY);
-    setIsVisible(savedDecision === null);
-  }, []);
+  const [isVisible, setIsVisible] = useState<boolean>(() => window.localStorage.getItem(COOKIE_CONSENT_KEY) === null);
 
   /**
    * Zapisuje wybór użytkownika i zamyka pasek cookies.
