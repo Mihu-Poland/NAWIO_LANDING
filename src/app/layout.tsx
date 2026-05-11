@@ -96,6 +96,12 @@ export default function RootLayout({
       className={`${inter.variable} ${cormorant.variable} h-full antialiased`}
     >
       <head>
+        <link
+          rel="preload"
+          as="image"
+          href="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1920"
+          fetchPriority="high"
+        />
         <meta
           name="google-site-verification"
           content="jsIgKEsPBt6sPBC7t1QaRTLFFxTasHibTmcGJIAslSE"
