@@ -104,7 +104,7 @@ export default function ContactSection() {
       <h2 className="section-title text-center">Napisz do nas</h2>
       <p className="section-subtitle mx-auto max-w-2xl text-center">Masz pytania? Odpiszemy w ciągu 24h.</p>
 
-      <div className="mx-auto w-full max-w-[600px] rounded-xl border border-(--card-border) bg-[oklch(0.19_0.028_260/0.72)] p-5 md:p-6">
+      <div className="w-full rounded-xl border border-(--card-border) bg-[oklch(0.19_0.028_260/0.72)] p-5 md:p-6">
         <form className="space-y-4" onSubmit={handleSubmit} noValidate>
           <div className="space-y-1">
             <label htmlFor="fullName" className="text-sm font-medium text-[#dbe3f1]">
