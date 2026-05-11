@@ -42,12 +42,16 @@ const pillars = [
   },
 ] satisfies Array<{ icon: LucideIcon; title: string; description: string }>;
 
+/** Wprowadzenie pod nagłówkiem „Dla kogo jest Nawio?” */
+const audienceSectionIntro =
+  "Prowadzisz spółkę. Nawio pilnuje terminów, generuje dokumenty i podpowiada co zrobić — żebyś do prawnika szedł tylko wtedy, gdy naprawdę trzeba.";
+
 const audiences = [
   {
     icon: Building2,
     title: "Właściciel jednoosobowej sp. z o.o.",
     description:
-      "Prowadzisz spółkę sam. Nie chcesz płacić 300 zł za każde pytanie do prawnika. Nawio kontroluje terminy i generuje dokumenty za Ciebie.",
+      "Jesteś na etapie, gdy każda formalność spada na Ciebie. Nawio porządkuje terminy KRS, ZUS i US oraz dokumenty w jednym miejscu — bez opłaty za każde drobne pytanie do prawnika.",
     badge: null,
   },
   {
@@ -319,10 +323,7 @@ export default function Home() {
 
         <section className="section-flow space-y-6 pt-8">
           <h2 className="section-title text-center">Dla kogo jest Nawio?</h2>
-          <p className="section-subtitle mx-auto max-w-3xl text-center">
-            Prowadzisz spółkę. Nawio pilnuje terminów, generuje dokumenty i podpowiada co zrobić — żebyś do prawnika
-            szedł tylko wtedy, gdy naprawdę trzeba.
-          </p>
+          <p className="section-subtitle mx-auto max-w-3xl text-center">{audienceSectionIntro}</p>
           <div className="grid gap-4 md:grid-cols-3">
             {audiences.map((audience) => {
               const Icon = audience.icon;
