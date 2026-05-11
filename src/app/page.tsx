@@ -176,7 +176,7 @@ export default function Home() {
             </div>
             <div className="mt-5 flex flex-wrap items-center text-sm text-[#a6b0c3]">
               <span>
-                <span className="text-[#D4AF37]">✓</span> Bez karty kredytowej
+                <span className="text-[#D4AF37]">✓</span> Zacznij za darmo
               </span>
               <span className="mx-6">
                 <span className="text-[#D4AF37]">✓</span> Dla sp. z o.o.
