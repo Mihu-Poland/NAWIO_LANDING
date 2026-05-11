@@ -183,7 +183,7 @@ export default function Home() {
             </a>
           </nav>
           <a
-            href="https://app.nawio.pl"
+            href="https://app.nawio.pl/login"
             className="btn-ghost justify-self-end rounded-md px-4 py-2 text-sm font-semibold"
           >
             Zaloguj
@@ -218,7 +218,7 @@ export default function Home() {
               <a href="https://app.nawio.pl/register" className="btn-gold rounded-md px-6 py-3 text-sm font-semibold">
                 Rozpocznij
               </a>
-              <a href="#jak-to-dziala" className="btn-ghost rounded-md px-6 py-3 text-sm font-semibold">
+              <a href="#cennik" className="btn-ghost rounded-md px-6 py-3 text-sm font-semibold">
                 Zobacz jak działa
               </a>
             </div>
