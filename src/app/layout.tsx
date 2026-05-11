@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     "Gotowe dokumenty, kontrolowane terminy, spokój właściciela sp. z o.o. — w jednym miejscu.",
   metadataBase: new URL("https://nawio.pl"),
   openGraph: {
-    title: "Nawio · Wszystko czego potrzebuje Twoja spółkę — w jednym miejscu",
+    title: "Nawio · Wszystko czego potrzebuje Twoja spółka — w jednym miejscu",
     description: "Gotowe dokumenty, kontrolowane terminy, spokój właściciela sp. z o.o.",
     url: "https://nawio.pl",
     siteName: "Nawio",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nawio · Wszystko czego potrzebuje Twoja spółkę — w jednym miejscu",
+    title: "Nawio · Wszystko czego potrzebuje Twoja spółka — w jednym miejscu",
     description: "Gotowe dokumenty, kontrolowane terminy, spokój właściciela sp. z o.o.",
   },
   alternates: {
