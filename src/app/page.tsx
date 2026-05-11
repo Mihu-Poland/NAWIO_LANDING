@@ -197,7 +197,7 @@ export default function Home() {
               <span className="hero-gold">Twoja spółka — w jednym miejscu</span>
             </h1>
             <p className="mt-6 max-w-2xl section-subtitle">
-              Gotowe dokumenty, kontrolowane terminy, spokój właściciela.
+              Gotowe dokumenty, kontrola terminów, spokój właściciela.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="https://app.nawio.pl/register" className="btn-gold rounded-md px-6 py-3 text-sm font-semibold">
