@@ -63,7 +63,7 @@ export default function ContactSection() {
       <h2 className="section-title text-center">Napisz do nas</h2>
       <p className="section-subtitle mx-auto max-w-2xl text-center">Odpowiemy w ciągu 24 godzin.</p>
 
-      <div className="mx-auto w-full max-w-lg rounded-xl border border-(--card-border) bg-[#252B3B] p-5 md:p-6">
+      <div className="w-full rounded-xl border border-(--card-border) bg-[#252B3B] p-5 md:p-6">
         <form className="space-y-4" onSubmit={form.handleSubmit(handleSubmit)} noValidate>
           <div className="space-y-1">
             <label htmlFor="fullName" className="text-sm font-medium text-[#dbe3f1]">
