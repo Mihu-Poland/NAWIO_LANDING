@@ -222,11 +222,11 @@ export default function Home() {
                 Zobacz jak działa
               </a>
             </div>
-            <div className="mt-5 flex flex-wrap items-center text-sm text-[#a6b0c3]">
+            <div className="mt-5 flex flex-col gap-2 text-sm text-[#a6b0c3] md:flex-row md:flex-wrap md:items-center md:gap-0">
               <span>
                 <span className="text-[#D4AF37]">✓</span> Zacznij za darmo
               </span>
-              <span className="mx-6">
+              <span className="md:mx-6">
                 <span className="text-[#D4AF37]">✓</span> Dla sp. z o.o.
               </span>
               <span>
@@ -259,7 +259,7 @@ export default function Home() {
         <section className="section-flow space-y-6 pt-8">
           <h2 className="section-title text-center">Podgląd kalendarza terminów</h2>
           <p className="section-subtitle mx-auto max-w-3xl text-center">
-            Mockup widoku miesięcznego z najbliższymi obowiązkami formalnymi Twojej spółki.
+            Widok kalendarza miesięcznego z najbliższymi obowiązkami formalnymi Twojej spółki.
           </p>
           <div className="card-luxe grid gap-6 p-5 md:grid-cols-[1.45fr_1fr] md:p-7">
             <div className="space-y-4">
@@ -320,7 +320,8 @@ export default function Home() {
         <section className="section-flow space-y-6 pt-8">
           <h2 className="section-title text-center">Dla kogo jest Nawio?</h2>
           <p className="section-subtitle mx-auto max-w-3xl text-center">
-            Jeśli prowadzisz sp. z o.o. bez prawnika w kieszeni — to jest dla Ciebie.
+            Prowadzisz spółkę. Nawio pilnuje terminów, generuje dokumenty i podpowiada co zrobić — żebyś do prawnika
+            szedł tylko wtedy, gdy naprawdę trzeba.
           </p>
           <div className="grid gap-4 md:grid-cols-3">
             {audiences.map((audience) => {
