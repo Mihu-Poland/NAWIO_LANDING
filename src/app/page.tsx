@@ -337,14 +337,18 @@ export default function Home() {
       </main>
 
       <footer className="container-main mt-16">
-        <p id="disclaimer" className="mb-5 text-center text-xs text-[#aab6cb]">
-          Nawio nie jest kancelarią prawną i nie świadczy usług doradztwa prawnego ani podatkowego.
-        </p>
         <div className="card-luxe grid gap-8 px-6 py-8 md:grid-cols-3">
           <div className="space-y-3">
             <Image src="/nawio-logo.svg" alt="Nawio" width={34} height={34} />
             <p className="text-sm text-[#dbe3f1]">Nawio — nawigator dokumentów dla sp. z o.o.</p>
-            <p className="text-xs text-[#93a0ba]">© 2026 Nawio</p>
+            <a href="mailto:hej@nawio.pl" className="block text-sm text-[#bcc6d8] hover:text-white">
+              hej@nawio.pl
+            </a>
+            <div className="space-y-1 pt-1 text-center text-xs text-[#93a0ba]">
+              <p>© 2026 Nawio</p>
+              <p>Nawio nie jest kancelarią prawną i nie świadczy usług doradztwa prawnego ani podatkowego.</p>
+              <p>Dokumenty generowane przez platformę wymagają weryfikacji przez prawnika.</p>
+            </div>
           </div>
 
           <div className="space-y-2 text-sm">
@@ -362,9 +366,6 @@ export default function Home() {
             </Link>
             <Link href="/regulamin" className="block text-[#bcc6d8] hover:text-white">
               Regulamin
-            </Link>
-            <Link href="/#disclaimer" className="block text-[#bcc6d8] hover:text-white">
-              Disclaimer (nie jesteśmy kancelarią)
             </Link>
             <CookieSettingsLink />
           </div>
