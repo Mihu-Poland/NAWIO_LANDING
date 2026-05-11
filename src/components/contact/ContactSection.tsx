@@ -59,7 +59,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="kontakt" className="section-flow space-y-6 pt-8">
+    <section id="kontakt" className="section-flow scroll-mt-24 space-y-6 pt-8">
       <h2 className="section-title text-center">Napisz do nas</h2>
       <p className="section-subtitle mx-auto max-w-2xl text-center">Odpowiemy w ciągu 24 godzin.</p>
 

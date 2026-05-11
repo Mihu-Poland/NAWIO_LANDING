@@ -158,6 +158,37 @@ export default function Home() {
       <Script id="schema-faq" type="application/ld+json">
         {JSON.stringify(faqSchema)}
       </Script>
+      <header className="hero-content sticky top-0 z-50 border-b border-(--card-border)/50 bg-[oklch(0.14_0.02_258/0.62)] backdrop-blur-2xl">
+        <div className="container-main grid grid-cols-[1fr_auto] items-center py-4 md:grid-cols-[1fr_auto_1fr]">
+          <div className="flex items-center gap-3 justify-self-start">
+            <Image src="/nawio-logo.svg" alt="Nawio" width={34} height={34} priority loading="eager" />
+            <div className="leading-tight">
+              <span className="font-serif text-2xl text-gold">Nawio</span>
+              <p className="text-[10px] uppercase tracking-[0.28em] text-[#9fa9bc]">PROWADZI. NIE RADZI.</p>
+            </div>
+          </div>
+          <nav className="hidden items-center gap-9 text-sm text-[#c3ccdd] md:flex">
+            <a href="#home" className="transition hover:text-white">
+              Strona główna
+            </a>
+            <a href="#cennik" className="transition hover:text-white">
+              Cennik
+            </a>
+            <a href="#faq" className="transition hover:text-white">
+              FAQ
+            </a>
+            <a href="#kontakt" className="transition hover:text-white">
+              Kontakt
+            </a>
+          </nav>
+          <a
+            href="https://app.nawio.pl"
+            className="btn-ghost justify-self-end rounded-md px-4 py-2 text-sm font-semibold"
+          >
+            Zaloguj
+          </a>
+        </div>
+      </header>
       <section id="home" className="hero-shell">
         <div className="absolute inset-0">
           <Image
@@ -171,37 +202,6 @@ export default function Home() {
           />
           <div className="hero-overlay" />
         </div>
-        <header className="hero-content sticky top-0 z-50 border-b border-(--card-border)/50 bg-[oklch(0.14_0.02_258/0.62)] backdrop-blur-2xl">
-          <div className="container-main grid grid-cols-[1fr_auto] items-center py-4 md:grid-cols-[1fr_auto_1fr]">
-            <div className="flex items-center gap-3 justify-self-start">
-              <Image src="/nawio-logo.svg" alt="Nawio" width={34} height={34} priority loading="eager" />
-              <div className="leading-tight">
-                <span className="font-serif text-2xl text-gold">Nawio</span>
-                <p className="text-[10px] uppercase tracking-[0.28em] text-[#9fa9bc]">PROWADZI. NIE RADZI.</p>
-              </div>
-            </div>
-            <nav className="hidden items-center gap-9 text-sm text-[#c3ccdd] md:flex">
-              <a href="#home" className="transition hover:text-white">
-                Strona główna
-              </a>
-              <a href="#cennik" className="transition hover:text-white">
-                Cennik
-              </a>
-              <a href="#faq" className="transition hover:text-white">
-                FAQ
-              </a>
-              <a href="#kontakt" className="transition hover:text-white">
-                Kontakt
-              </a>
-            </nav>
-            <a
-              href="https://app.nawio.pl"
-              className="btn-ghost justify-self-end rounded-md px-4 py-2 text-sm font-semibold"
-            >
-              Zaloguj
-            </a>
-          </div>
-        </header>
 
         <div className="hero-content container-main flex min-h-[calc(100svh-84px)] items-center py-14 md:py-20">
           <div className="max-w-4xl">
@@ -344,7 +344,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="jak-to-dziala" className="section-flow space-y-6 pt-8">
+        <section id="jak-to-dziala" className="section-flow scroll-mt-24 space-y-6 pt-8">
           <h2 className="section-title text-center">Trzy kroki do porządku w spółce</h2>
           <div className="grid gap-4 md:grid-cols-3">
             {steps.map((step, idx) => {

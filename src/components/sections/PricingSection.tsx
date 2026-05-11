@@ -52,7 +52,7 @@ export default function PricingSection() {
   }, [billingPeriod]);
 
   return (
-    <section id="cennik" className="section-flow space-y-6 pt-8">
+    <section id="cennik" className="section-flow scroll-mt-24 space-y-6 pt-8">
       <h2 className="section-title text-center">Wybierz swój plan</h2>
       <p className="section-subtitle mx-auto max-w-3xl text-center">
         Zacznij za darmo. Przejdź na wyższy plan gdy będziesz gotowy.

@@ -16,7 +16,7 @@ type FaqSectionProps = {
  */
 export default function FaqSection(props: FaqSectionProps) {
   return (
-    <section id="faq" className="section-flow space-y-6 pt-8">
+    <section id="faq" className="section-flow scroll-mt-24 space-y-6 pt-8">
       <h2 className="section-title text-center">Najczęstsze pytania</h2>
       <div className="space-y-3">
         {props.items.map((item) => (
