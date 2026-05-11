@@ -14,6 +14,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import CookieSettingsLink from "@/components/legal/CookieSettingsLink";
+import ScrollToTopButton from "@/components/nav/ScrollToTopButton";
 
 const PricingSection = dynamic(() => import("@/components/sections/PricingSection"));
 const FaqSection = dynamic(() => import("@/components/sections/FaqSection"));
@@ -158,7 +159,7 @@ export default function Home() {
       <Script id="schema-faq" type="application/ld+json">
         {JSON.stringify(faqSchema)}
       </Script>
-      <header className="hero-content sticky top-0 z-50 border-b border-(--card-border)/50 bg-[oklch(0.14_0.02_258/0.62)] backdrop-blur-2xl">
+      <header className="sticky top-0 z-50 border-b border-(--card-border)/50 bg-[oklch(0.14_0.02_258/0.62)] backdrop-blur-2xl">
         <div className="container-main grid grid-cols-[1fr_auto] items-center py-4 md:grid-cols-[1fr_auto_1fr]">
           <div className="flex items-center gap-3 justify-self-start">
             <Image src="/nawio-logo.svg" alt="Nawio" width={34} height={34} priority loading="eager" />
@@ -370,6 +371,7 @@ export default function Home() {
         <SecuritySection />
         <LazyContactSection />
       </main>
+      <ScrollToTopButton />
 
       <footer className="container-main mt-16">
         <div className="card-luxe grid gap-8 px-6 py-8 md:grid-cols-3">
