@@ -1,0 +1,94 @@
+# [LAN] .github/workflows/blog-generator.yml
+# -------------------------------------------
+# Półautomatyczny generator artykułów bloga Nawio.
+#
+# TRIGGERY:
+#   - Cron: każdy poniedziałek o 7:00 CET (6:00 UTC)
+#   - workflow_dispatch: ręczne odpalenie z GitHub Actions UI
+#
+# FLOW:
+#   1. Checkout repo
+#   2. Setup Node.js 20
+#   3. Uruchom scripts/generate-blog-post.mjs
+#   4. Skrypt tworzy PR + wysyła email — reszta jest po Twojej stronie
+#
+# WYMAGANE SEKRETY (GitHub repo → Settings → Secrets and variables → Actions):
+#   ANTHROPIC_API_KEY   — klucz Claude API
+#   GITHUB_TOKEN        — automatycznie dostępny w Actions (nie musisz dodawać)
+#   RESEND_API_KEY      — klucz Resend (https://resend.com)
+#
+# NAPYCHANIE MISIA:
+# - timeout-minutes: 10 — Claude z web_search może chwilę działać
+# - permissions: contents: write + pull-requests: write — wymagane do tworzenia PR
+# - GITHUB_REPO ustawiamy dynamicznie z github.repository
+#
+# @author Jadźka (Cursor AI persona) + Mihu
+# @updated 2026-05-12
+
+name: Blog Auto-Generator
+
+on:
+  # Cron: co poniedziałek o 7:00 CET (= 6:00 UTC w czasie zimowym, 5:00 UTC letnim)
+  # Używamy 6:00 UTC — w sezonie letnim będzie 8:00 CEST, co też jest OK
+  schedule:
+    - cron: "0 6 * * 1"
+
+  # Ręczne odpalenie z GitHub Actions UI
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run — generuj artykuł ale NIE twórz PR ani nie wysyłaj emaila"
+        required: false
+        default: "false"
+        type: boolean
+
+permissions:
+  contents: write        # potrzebne do tworzenia branchy i commitów
+  pull-requests: write   # potrzebne do tworzenia PR
+
+jobs:
+  generate-post:
+    name: Generate Blog Post
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      # -----------------------------------------------------------------------
+      # 1. Checkout
+      # -----------------------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      # -----------------------------------------------------------------------
+      # 2. Setup Node.js
+      # -----------------------------------------------------------------------
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # -----------------------------------------------------------------------
+      # 3. Uruchom generator
+      # -----------------------------------------------------------------------
+      - name: Generate blog post
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN:      ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO:       ${{ github.repository }}
+          RESEND_API_KEY:    ${{ secrets.RESEND_API_KEY }}
+          DRY_RUN:           ${{ inputs.dry_run || 'false' }}
+        run: node scripts/generate-blog-post.mjs
+
+      # -----------------------------------------------------------------------
+      # 4. Podsumowanie w GitHub Actions
+      # -----------------------------------------------------------------------
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Blog Generator — wynik" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Sprawdź logi kroku 'Generate blog post' po szczegóły." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "PR jest dostępny w zakładce Pull Requests repozytorium." >> $GITHUB_STEP_SUMMARY

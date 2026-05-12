@@ -12,7 +12,7 @@
  * - Każdy artykuł ma disclaimer na dole (wymóg prawny Nawio)
  * - readingTime liczymy z grubsza: ~200 słów/minutę
  *
- * @author Mihu
+ * @author Jadźka (Cursor AI persona) + Mihu
  * @updated 2026-05-12
  */
 
@@ -523,8 +523,8 @@ Przewodniczący Zgromadzenia:         Protokolant:
 // ---------------------------------------------------------------------------
 
 /**
- * Zwraca wszystkie artykuły posortowane od najnowszych (wg `publishedAt`).
- * TODO (v2): podmiana na fetch z CMS lub MDX.
+ * Zwraca wszystkie artykuły posortowane od najnowszych.
+ * TODO (v2): zastąpić fetchem z CMS / MDX glob
  */
 export function getBlogPosts(): BlogPost[] {
   return [...POSTS].sort(
@@ -534,22 +534,22 @@ export function getBlogPosts(): BlogPost[] {
 }
 
 /**
- * Zwraca pojedynczy artykuł po slug lub `undefined`, gdy brak wpisu.
- * Używane w `generateMetadata` i stronie wpisu.
+ * Zwraca pojedynczy artykuł po slug lub undefined jeśli nie istnieje.
+ * Używany przez generateMetadata() i page.tsx artykułu.
  */
 export function getBlogPost(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug)
 }
 
 /**
- * Zwraca listę slugów — dla `generateStaticParams` w `/blog/[slug]`.
+ * Zwraca wszystkie slugi — potrzebne dla generateStaticParams() w [slug]/page.tsx.
  */
 export function getBlogSlugs(): string[] {
   return POSTS.map((p) => p.slug)
 }
 
 /**
- * Mapuje kategorię na etykietę wyświetlaną w UI.
+ * Mapuje kategorię na polską etykietę UI.
  */
 export function getCategoryLabel(category: BlogCategory): string {
   const labels: Record<BlogCategory, string> = {
