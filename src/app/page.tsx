@@ -42,7 +42,6 @@ const pillars = [
   },
 ] satisfies Array<{ icon: LucideIcon; title: string; description: string }>;
 
-/** Tekst pod nagłówkiem „Dla kogo jest Nawio?” */
 const audienceSectionIntro =
   "Dla każdego, kto woli pilnować biznesu niż terminów w urzędach.";
 
@@ -88,6 +87,7 @@ const steps = [
   },
 ] satisfies Array<{ icon: LucideIcon; title: string; description: string }>;
 
+// ─── FAQ — rozbudowane o long-tail dla AEO/voice search ──────────────────────
 const faqs = [
   {
     q: "Czy Nawio to kancelaria prawna?",
@@ -99,7 +99,7 @@ const faqs = [
   },
   {
     q: "Ile kosztuje Nawio?",
-    a: "Dostęp w fazie beta jest bezpłatny. Docelowo planujemy model pay-per-dokument oraz subskrypcję miesięczną. O cenach poinformujemy przed zakończeniem bety — bez niespodzianek.",
+    a: "Nawio oferuje plan Free (0 zł/mies.), plan Solo (49 zł netto/mies.) i plan Biuro (149 zł netto/mies.). Plan Free nie ma limitu czasu — można zacząć bezpłatnie bez podawania karty kredytowej.",
   },
   {
     q: "Czy moje dane są bezpieczne?",
@@ -108,6 +108,18 @@ const faqs = [
   {
     q: "Czy mogę prowadzić więcej niż jedną spółkę?",
     a: "Tak. Nawio obsługuje wiele spółek w jednym koncie. Przełączasz się między nimi jednym kliknięciem.",
+  },
+  {
+    q: "Jak wygenerować uchwałę sp. z o.o. w Nawio?",
+    a: "Zaloguj się, wybierz spółkę, przejdź do Kreatora dokumentów i wybierz typ uchwały (np. o podziale zysku, powołaniu zarządu). Dane spółki uzupełniają się automatycznie — pobierasz gotowy PDF lub DOCX w kilka minut.",
+  },
+  {
+    q: "Kiedy trzeba zwołać zgromadzenie wspólników sp. z o.o.?",
+    a: "Zwyczajne Zgromadzenie Wspólników (ZZW) musi odbyć się w ciągu 6 miesięcy od zakończenia roku obrotowego — zazwyczaj do 30 czerwca. Nawio automatycznie przypomina o tym terminie z wyprzedzeniem.",
+  },
+  {
+    q: "Czy Nawio działa jako aplikacja mobilna na telefonie?",
+    a: "Tak. Nawio działa jako Progressive Web App (PWA). Na telefonie z iOS lub Android wybierz 'Dodaj do ekranu głównego' — działa jak natywna aplikacja bez App Store i Google Play.",
   },
 ];
 
@@ -132,13 +144,15 @@ export default function Home() {
   const webPageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Nawio — Wszystko czego potrzebuje Twoja spółka w jednym miejscu",
-    description: "Gotowe dokumenty, kontrolowane terminy, spokój właściciela sp. z o.o.",
+    name: "Nawio — dokumenty i terminy sp. z o.o. w jednym miejscu",
+    description:
+      "Nawio generuje uchwały, protokoły i umowy dla sp. z o.o. oraz pilnuje terminów KRS, ZUS i US. Asystent AI bez prawniczego bełkotu.",
     url: "https://nawio.pl",
     inLanguage: "pl",
     publisher: {
       "@type": "Organization",
-      name: "Nawio",
+      name: "BearStone sp. z o.o.",
+      url: "https://nawio.pl",
     },
   };
 
@@ -163,6 +177,8 @@ export default function Home() {
       <Script id="schema-faq" type="application/ld+json">
         {JSON.stringify(faqSchema)}
       </Script>
+
+      {/* ── HEADER ────────────────────────────────────────────────────────── */}
       <header className="sticky top-0 z-50 border-b border-(--card-border)/50 bg-[oklch(0.14_0.02_258/0.62)] backdrop-blur-2xl">
         <div className="container-main grid grid-cols-[1fr_auto] items-center py-4 md:grid-cols-[1fr_auto_1fr]">
           <div className="flex items-center gap-3 justify-self-start">
@@ -173,18 +189,10 @@ export default function Home() {
             </div>
           </div>
           <nav className="hidden items-center gap-9 text-sm text-[#c3ccdd] md:flex">
-            <a href="#home" className="transition hover:text-white">
-              Strona główna
-            </a>
-            <a href="#cennik" className="transition hover:text-white">
-              Cennik
-            </a>
-            <a href="#faq" className="transition hover:text-white">
-              FAQ
-            </a>
-            <a href="#kontakt" className="transition hover:text-white">
-              Kontakt
-            </a>
+            <a href="#home" className="transition hover:text-white">Strona główna</a>
+            <a href="#cennik" className="transition hover:text-white">Cennik</a>
+            <a href="#faq" className="transition hover:text-white">FAQ</a>
+            <a href="#kontakt" className="transition hover:text-white">Kontakt</a>
           </nav>
           <a
             href="https://app.nawio.pl/login"
@@ -194,11 +202,13 @@ export default function Home() {
           </a>
         </div>
       </header>
+
+      {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section id="home" className="hero-shell">
         <div className="absolute inset-0">
           <Image
             src="/hero.jpg"
-            alt=""
+            alt="Eleganckie biuro — Nawio pomaga właścicielom sp. z o.o. ogarnąć dokumenty i terminy"
             fill
             priority
             loading="eager"
@@ -227,39 +237,36 @@ export default function Home() {
               </a>
             </div>
             <div className="mt-5 flex flex-col gap-2 text-sm text-[#a6b0c3] md:flex-row md:flex-wrap md:items-center md:gap-0">
-              <span>
-                <span className="text-[#D4AF37]">✓</span> Zacznij za darmo
-              </span>
-              <span className="md:mx-6">
-                <span className="text-[#D4AF37]">✓</span> Dla sp. z o.o.
-              </span>
-              <span>
-                <span className="text-[#D4AF37]">✓</span> Działa jako aplikacja mobilna
-              </span>
+              <span><span className="text-[#D4AF37]">✓</span> Zacznij za darmo</span>
+              <span className="md:mx-6"><span className="text-[#D4AF37]">✓</span> Dla sp. z o.o.</span>
+              <span><span className="text-[#D4AF37]">✓</span> Działa jako aplikacja mobilna</span>
             </div>
           </div>
         </div>
       </section>
 
       <main className="container-main space-y-20 pt-10">
+
+        {/* ── TRZY FILARY ───────────────────────────────────────────────── */}
         <section className="section-flow space-y-6 pt-8">
           <h2 className="section-title text-center">Trzy filary Nawio</h2>
           <div className="grid gap-4 md:grid-cols-3">
             {pillars.map((pillar) => {
               const Icon = pillar.icon;
               return (
-              <article key={pillar.title} className="card-luxe border-(--card-border)/90 p-5">
-                <div className="mb-4 grid h-11 w-11 place-items-center rounded-md border border-(--gold)/55 bg-(--gold-soft) text-lg text-gold">
-                  <Icon className="h-5 w-5" />
-                </div>
-                <h3 className="text-[20px] font-semibold text-white">{pillar.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#bcc6d8]">{pillar.description}</p>
-              </article>
+                <article key={pillar.title} className="card-luxe border-(--card-border)/90 p-5">
+                  <div className="mb-4 grid h-11 w-11 place-items-center rounded-md border border-(--gold)/55 bg-(--gold-soft) text-lg text-gold">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-[20px] font-semibold text-white">{pillar.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-[#bcc6d8]">{pillar.description}</p>
+                </article>
               );
             })}
           </div>
         </section>
 
+        {/* ── KALENDARZ DEMO ────────────────────────────────────────────── */}
         <section className="section-flow space-y-6 pt-8">
           <h2 className="section-title text-center">Podgląd kalendarza terminów</h2>
           <p className="section-subtitle mx-auto max-w-3xl text-center">
@@ -292,18 +299,10 @@ export default function Home() {
                 ))}
               </div>
               <div className="grid gap-2 pt-1 text-xs text-[#b8c2d5] sm:grid-cols-2">
-                <p className="flex items-center gap-2">
-                  <span className="legend-dot bg-[#D4AF37]" /> Spółka
-                </p>
-                <p className="flex items-center gap-2">
-                  <span className="legend-dot bg-[#3B82F6]" /> ZUS
-                </p>
-                <p className="flex items-center gap-2">
-                  <span className="legend-dot bg-[#10B981]" /> US / VAT
-                </p>
-                <p className="flex items-center gap-2">
-                  <span className="legend-dot bg-[#8B5CF6]" /> KRS
-                </p>
+                <p className="flex items-center gap-2"><span className="legend-dot bg-[#D4AF37]" /> Spółka</p>
+                <p className="flex items-center gap-2"><span className="legend-dot bg-[#3B82F6]" /> ZUS</p>
+                <p className="flex items-center gap-2"><span className="legend-dot bg-[#10B981]" /> US / VAT</p>
+                <p className="flex items-center gap-2"><span className="legend-dot bg-[#8B5CF6]" /> KRS</p>
               </div>
             </div>
             <aside className="rounded-xl border border-(--card-border) bg-[oklch(0.19_0.027_260/0.72)] p-4">
@@ -321,6 +320,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── DLA KOGO ──────────────────────────────────────────────────── */}
         <section className="section-flow space-y-6 pt-8">
           <h2 className="section-title text-center">Dla kogo jest Nawio?</h2>
           <p className="section-subtitle mx-auto max-w-3xl text-center">{audienceSectionIntro}</p>
@@ -328,60 +328,64 @@ export default function Home() {
             {audiences.map((audience) => {
               const Icon = audience.icon;
               return (
-              <article key={audience.title} className="card-luxe p-5">
-                <div className="mb-3 flex items-center justify-between">
-                  <span className="grid h-10 w-10 place-items-center rounded-md border border-(--gold)/55 bg-(--gold-soft) text-gold">
-                    <Icon className="h-5 w-5" />
-                  </span>
-                  {audience.badge ? (
-                    <span className="rounded-full border border-(--gold)/60 bg-(--gold-soft) px-2 py-0.5 text-[11px] text-gold">
-                      {audience.badge}
+                <article key={audience.title} className="card-luxe p-5">
+                  <div className="mb-3 flex items-center justify-between">
+                    <span className="grid h-10 w-10 place-items-center rounded-md border border-(--gold)/55 bg-(--gold-soft) text-gold">
+                      <Icon className="h-5 w-5" />
                     </span>
-                  ) : null}
-                </div>
-                <h3 className="text-[20px] font-semibold text-white">{audience.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#bcc6d8]">{audience.description}</p>
-              </article>
+                    {audience.badge ? (
+                      <span className="rounded-full border border-(--gold)/60 bg-(--gold-soft) px-2 py-0.5 text-[11px] text-gold">
+                        {audience.badge}
+                      </span>
+                    ) : null}
+                  </div>
+                  <h3 className="text-[20px] font-semibold text-white">{audience.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-[#bcc6d8]">{audience.description}</p>
+                </article>
               );
             })}
           </div>
         </section>
 
+        {/* ── TRZY KROKI ────────────────────────────────────────────────── */}
         <section id="jak-to-dziala" className="section-flow scroll-mt-24 space-y-6 pt-8">
           <h2 className="section-title text-center">Trzy kroki do porządku w spółce</h2>
           <div className="grid gap-4 md:grid-cols-3">
             {steps.map((step, idx) => {
               const Icon = step.icon;
               return (
-              <article key={step.title} className="card-luxe p-5">
-                <p className="text-sm uppercase tracking-[0.2em] text-gold">Krok {idx + 1}</p>
-                <h3 className="mt-2 flex items-center gap-2 text-[20px] font-semibold text-white">
-                  <span className="grid h-8 w-8 place-items-center rounded-md border border-(--gold)/55 bg-(--gold-soft) text-gold">
-                    <Icon className="h-4 w-4" />
-                  </span>
-                  {step.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#bcc6d8]">{step.description}</p>
-              </article>
+                <article key={step.title} className="card-luxe p-5">
+                  <p className="text-sm uppercase tracking-[0.2em] text-gold">Krok {idx + 1}</p>
+                  <h3 className="mt-2 flex items-center gap-2 text-[20px] font-semibold text-white">
+                    <span className="grid h-8 w-8 place-items-center rounded-md border border-(--gold)/55 bg-(--gold-soft) text-gold">
+                      <Icon className="h-4 w-4" />
+                    </span>
+                    {step.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-[#bcc6d8]">{step.description}</p>
+                </article>
               );
             })}
           </div>
         </section>
 
+        {/* ── SEKCJE DYNAMICZNE ─────────────────────────────────────────── */}
         <PricingSection />
         <FaqSection items={faqs} />
         <SecuritySection />
         <LazyContactSection />
+
       </main>
+
       <ScrollToTopButton />
 
+      {/* ── FOOTER ────────────────────────────────────────────────────────── */}
       <footer className="container-main mt-16">
         <div className="card-luxe grid gap-8 px-6 py-8 md:grid-cols-3">
           <div className="space-y-3">
             <Image src="/nawio-logo.svg" alt="Nawio" width={34} height={34} />
             <p className="text-[10px] uppercase tracking-[0.28em] text-[#9fa9bc]">PROWADZI. NIE RADZI.</p>
           </div>
-
           <div className="space-y-2 text-sm">
             <p className="font-semibold text-white">Produkt</p>
             <p className="text-[#bcc6d8]">Kalendarz</p>
@@ -389,7 +393,6 @@ export default function Home() {
             <p className="text-[#bcc6d8]">Asystent AI</p>
             <p className="text-[#93a0ba]">Cennik (wkrótce)</p>
           </div>
-
           <div className="space-y-2 text-sm">
             <p className="font-semibold text-white">Prawne</p>
             <Link href="/polityka-prywatnosci" className="block text-[#bcc6d8] hover:text-white">
@@ -400,9 +403,9 @@ export default function Home() {
             </Link>
             <CookieSettingsLink />
           </div>
-
         </div>
       </footer>
+
       <div className="container-main pb-6 pt-4">
         <p className="text-center text-xs leading-relaxed text-[#93a0ba]">
           © 2026 Nawio · Nawio nie jest kancelarią prawną i nie świadczy usług doradztwa prawnego ani podatkowego.
