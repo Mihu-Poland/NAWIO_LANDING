@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  getBlogPosts,
-  getCategoryLabel,
-  type BlogCategory,
-  type BlogPost,
-} from "@/lib/blog";
+import { CategoryBadge } from "@/components/blog/CategoryBadge";
+import { formatPolishDate } from "@/lib/format-polish-date";
+import { getBlogPosts, type BlogPost } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -27,49 +24,6 @@ export const metadata: Metadata = {
       "Uchwały, zgromadzenia wspólników, terminy KRS — informacje ogólne dla właścicieli spółek.",
   },
 };
-
-/**
- * Formatuje datę ISO do postaci np. „12 maja 2026”.
- *
- * @author Mihu
- */
-function formatDate(isoDate: string): string {
-  return new Date(isoDate).toLocaleDateString("pl-PL", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
-
-/**
- * Etykieta kategorii wpisu — stonowane kolory pod ciemny motyw Nawio.
- *
- * @author Mihu
- */
-function CategoryBadge({ category }: { category: BlogCategory }) {
-  const colorMap: Record<BlogCategory, string> = {
-    dokumenty:
-      "border-[#3b82f6]/35 bg-[#3b82f6]/10 text-[#93c5fd]",
-    terminy:
-      "border-[#f59e0b]/35 bg-[#f59e0b]/10 text-[#fcd34d]",
-    krs:
-      "border-[#a855f7]/35 bg-[#a855f7]/10 text-[#e9d5ff]",
-    zus:
-      "border-[#22c55e]/35 bg-[#22c55e]/10 text-[#bbf7d0]",
-    us:
-      "border-[#ef4444]/35 bg-[#ef4444]/10 text-[#fecaca]",
-    poradnik:
-      "border-[#14b8a6]/35 bg-[#14b8a6]/10 text-[#99f6e4]",
-  };
-
-  return (
-    <span
-      className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${colorMap[category]}`}
-    >
-      {getCategoryLabel(category)}
-    </span>
-  );
-}
 
 /**
  * Karta pojedynczego wpisu na liście bloga.
@@ -99,10 +53,10 @@ function PostCard({ post }: { post: BlogPost }) {
 
       <div className="flex items-center justify-between gap-2 border-t border-(--card-border)/80 pt-4">
         <time dateTime={post.publishedAt} className="text-xs text-[#93a0ba]">
-          {formatDate(post.publishedAt)}
+          {formatPolishDate(post.publishedAt)}
           {post.updatedAt && post.updatedAt !== post.publishedAt ? (
             <span className="ml-1 block sm:inline">
-              (aktualizacja: {formatDate(post.updatedAt)})
+              (aktualizacja: {formatPolishDate(post.updatedAt)})
             </span>
           ) : null}
         </time>
