@@ -87,7 +87,6 @@ const steps = [
   },
 ] satisfies Array<{ icon: LucideIcon; title: string; description: string }>;
 
-// ─── FAQ — rozbudowane o long-tail dla AEO/voice search ──────────────────────
 const faqs = [
   {
     q: "Czy Nawio to kancelaria prawna?",
@@ -374,6 +373,43 @@ export default function Home() {
         <FaqSection items={faqs} />
         <SecuritySection />
         <LazyContactSection />
+
+        {/* ── O NAWIO ───────────────────────────────────────────────────── */}
+        <section id="o-nawio" className="section-flow scroll-mt-24 space-y-6 pt-8">
+          <h2 className="section-title text-center">O Nawio</h2>
+          <div className="card-luxe mx-auto max-w-3xl space-y-5 p-8 text-center">
+            <p className="text-xl font-semibold text-white">
+              Nawio powstało z frustracji, nie z inspiracji.
+            </p>
+            <p className="text-sm leading-relaxed text-[#bcc6d8]">
+              Jako właściciele spółki z o.o. sami doświadczyliśmy tego, co zna każdy mały przedsiębiorca
+              — stosu formalności, terminów których nie sposób spamiętać i pytań, na które odpowiedź
+              powinna być prosta i dostępna od ręki.
+            </p>
+            <p className="text-sm leading-relaxed text-[#bcc6d8]">
+              Gotowego rozwiązania nie było. Zbudowaliśmy je sami.
+            </p>
+            <div className="my-4 border-t border-(--card-border)" />
+            <p className="text-sm leading-relaxed text-[#bcc6d8]">
+              Nawio to projekt realizowany przez{" "}
+              <span className="font-semibold text-white">BearStone sp. z o.o.</span>{" "}
+              w ramach{" "}
+              <span className="font-semibold text-gold">BStone Lab</span>{" "}
+              — wewnętrznego inkubatora oprogramowania, w którym tworzymy narzędzia odpowiadające
+              na realne problemy małych podmiotów. Nie korporacyjne platformy. Nie kolejny kombajn.
+              Proste narzędzie, które robi dokładnie to, czego potrzebuje właściciel sp. z o.o.
+            </p>
+            <p className="text-sm leading-relaxed text-[#bcc6d8]">
+              Nawio nie zastąpi specjalistycznej wiedzy — ale sprawi, że po tę wiedzę będziesz
+              sięgać tylko wtedy, gdy naprawdę musisz.
+            </p>
+            <div className="pt-2">
+              <span className="inline-block rounded-full border border-(--gold)/40 bg-(--gold-soft) px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-gold">
+                BStone Lab · BearStone sp. z o.o.
+              </span>
+            </div>
+          </div>
+        </section>
 
       </main>
 

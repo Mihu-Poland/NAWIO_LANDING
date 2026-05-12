@@ -1,52 +1,24 @@
-import type { MetadataRoute } from "next";
+import { MetadataRoute } from "next";
 
-/**
- * Generuje mapę strony dla publicznych adresów URL serwisu.
- *
- * @returns Lista wpisów sitemap z priorytetami i częstotliwością zmian.
- *
- * @author Mihu
- */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://nawio.pl";
-  const lastModified = new Date();
-
   return [
     {
-      url: `${baseUrl}/`,
-      lastModified,
+      url: "https://nawio.pl",
+      lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 1.0,
+      priority: 1,
     },
     {
-      url: `${baseUrl}/cennik`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.8,
+      url: "https://nawio.pl/polityka-prywatnosci",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.3,
     },
     {
-      url: `${baseUrl}/faq`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/regulamin`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/polityka-prywatnosci`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/kontakt`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.8,
+      url: "https://nawio.pl/regulamin",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.3,
     },
   ];
 }
