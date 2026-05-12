@@ -182,7 +182,7 @@ ${topicsJson}
   console.log("✅ Claude odpowiedział, parsuję JSON...")
 
   // Czyścimy ewentualne backticki jeśli model nie posłuchał
-  const cleanJson = rawText.replace(/^```json\s*/i, "").replace(/```\s*$/i, "").trim()
+  const jsonStart = rawText.indexOf("{"); const jsonEnd = rawText.lastIndexOf("}"); if (jsonStart === -1 || jsonEnd === -1) { throw new Error("Brak JSON w odpowiedzi Claude") }; const cleanJson = rawText.slice(jsonStart, jsonEnd + 1)
 
   let article
   try {
