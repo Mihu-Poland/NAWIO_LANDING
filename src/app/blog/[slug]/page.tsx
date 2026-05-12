@@ -5,7 +5,14 @@ import { CategoryBadge } from "@/components/blog/CategoryBadge";
 import { formatPolishDate } from "@/lib/format-polish-date";
 import { getBlogPost, getBlogSlugs, type BlogPost } from "@/lib/blog";
 
-const OG_IMAGE = "https://nawio.pl/og-image.png";
+/**
+ * Zwraca publiczny URL obrazu Open Graph generowanego dla danego sluga.
+ *
+ * @author Mihu
+ */
+function blogOgImageUrl(slug: string): string {
+  return `https://nawio.pl/blog/${slug}/opengraph-image`;
+}
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -32,6 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const canonicalUrl = `https://nawio.pl/blog/${post.slug}`;
+  const ogImage = blogOgImageUrl(post.slug);
 
   return {
     title: post.title,
@@ -48,7 +56,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       authors: ["BearStone sp. z o.o."],
       images: [
         {
-          url: OG_IMAGE,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -59,7 +67,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: [OG_IMAGE],
+      images: [ogImage],
     },
   };
 }
@@ -75,7 +83,7 @@ function BlogPostingJsonLd({ post }: { post: BlogPost }) {
     "@type": "BlogPosting",
     headline: post.title,
     description: post.description,
-    image: [OG_IMAGE],
+    image: [blogOgImageUrl(post.slug)],
     datePublished: post.publishedAt,
     dateModified: post.updatedAt ?? post.publishedAt,
     author: {
