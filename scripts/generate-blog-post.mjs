@@ -123,7 +123,7 @@ Twoje artykuły:
 Disclaimer (wstaw dosłownie jako ostatni element):
 <div class="disclaimer"><p>Treści publikowane przez Nawio mają charakter informacyjny i nie stanowią porady prawnej ani podatkowej. BearStone sp. z o.o. nie ponosi odpowiedzialności za skutki działań podjętych na ich podstawie.</p></div>
 
-Odpowiadaj WYŁĄCZNIE w formacie JSON, bez markdown, bez backticks. Struktura:
+Odpowiadaj WYŁĄCZNIE w formacie JSON, bez markdown, bez backticks. W polu content używaj WYŁĄCZNIE pojedynczych cudzysłowów w atrybutach HTML (class='disclaimer' zamiast class="disclaimer"). Nigdy nie używaj podwójnych cudzysłowów wewnątrz wartości JSON. Struktura:
 {
   "slug": "string (kebab-case, tylko lowercase i myślniki)",
   "title": "string (max 60 znaków, keyword-rich)",
