@@ -151,7 +151,7 @@ ${topicsJson}
     },
     body: JSON.stringify({
       model: CONFIG.model,
-      max_tokens: 8000,
+      max_tokens: 16000,
       system: systemPrompt,
       tools: [
         {
