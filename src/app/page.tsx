@@ -189,6 +189,9 @@ export default function Home() {
           </div>
           <nav className="hidden items-center gap-9 text-sm text-[#c3ccdd] md:flex">
             <a href="#home" className="transition hover:text-white">Strona główna</a>
+            <Link href="/blog" className="transition hover:text-white">
+              Blog
+            </Link>
             <a href="#cennik" className="transition hover:text-white">Cennik</a>
             <a href="#faq" className="transition hover:text-white">FAQ</a>
             <a href="#kontakt" className="transition hover:text-white">Kontakt</a>

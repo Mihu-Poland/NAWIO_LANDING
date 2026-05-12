@@ -209,3 +209,95 @@ h2 {
   background: oklch(0.25 0.032 260 / 0.54);
   color: #fff;
 }
+
+/* Treść artykułów bloga (HTML z `src/lib/blog.ts`) */
+.blog-prose article h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  color: #fff;
+}
+
+.blog-prose article h2:first-child {
+  margin-top: 0;
+}
+
+.blog-prose article p,
+.blog-prose article li {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: #bcc6d8;
+}
+
+.blog-prose article ul,
+.blog-prose article ol {
+  margin: 0.75rem 0 1rem;
+  padding-left: 1.35rem;
+}
+
+.blog-prose article li + li {
+  margin-top: 0.35rem;
+}
+
+.blog-prose article strong {
+  color: #e8edf5;
+  font-weight: 600;
+}
+
+.blog-prose .code-block {
+  margin: 1rem 0 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--card-border);
+  background: oklch(0.14 0.02 260 / 0.95);
+  overflow: hidden;
+}
+
+.blog-prose .code-block pre {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: #d5dce8;
+  white-space: pre-wrap;
+}
+
+.blog-prose .calendar-table {
+  margin: 1rem 0 1.5rem;
+  overflow-x: auto;
+}
+
+.blog-prose .calendar-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.blog-prose .calendar-table th,
+.blog-prose .calendar-table td {
+  border: 1px solid var(--card-border);
+  padding: 0.55rem 0.65rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.blog-prose .calendar-table th {
+  color: #fff;
+  background: oklch(0.22 0.03 260 / 0.75);
+}
+
+.blog-prose .calendar-table td {
+  color: #bcc6d8;
+}
+
+.blog-prose .disclaimer {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--card-border);
+}
+
+.blog-prose .disclaimer p {
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: #93a0ba;
+}

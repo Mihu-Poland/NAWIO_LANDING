@@ -1,6 +1,22 @@
 import { MetadataRoute } from "next";
+import { getBlogSlugs } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const blogEntries: MetadataRoute.Sitemap = [
+    {
+      url: "https://nawio.pl/blog",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.75,
+    },
+    ...getBlogSlugs().map((slug) => ({
+      url: `https://nawio.pl/blog/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.65,
+    })),
+  ];
+
   return [
     {
       url: "https://nawio.pl",
@@ -20,5 +36,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.3,
     },
+    ...blogEntries,
   ];
 }
