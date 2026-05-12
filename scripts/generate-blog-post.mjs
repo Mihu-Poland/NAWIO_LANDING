@@ -54,7 +54,7 @@ const CONFIG = {
   emailFrom:       "nawio-blog@nawio.pl",          // zweryfikowana domena w Resend
   contentDir:      path.join(ROOT, "src/content/blog"),
   indexFile:       path.join(ROOT, "src/content/blog/index.ts"),
-  model:           "claude-sonnet-4-20250514",
+  model:           "claude-sonnet-4-5",
 }
 
 // ---------------------------------------------------------------------------
