@@ -10,7 +10,7 @@
 import type { BlogPost } from "@/lib/blog"
 import { DISCLAIMER } from "@/content/blog/_disclaimer"
 
-const post: BlogPost = {
+const blogPost: BlogPost = {
   slug: "terminy-krs-2026",
   title: "Terminy KRS 2026 — co i kiedy zgłosić w spółce z o.o.",
   description:
@@ -135,4 +135,4 @@ const post: BlogPost = {
   `,
 }
 
-export default post
+export default blogPost

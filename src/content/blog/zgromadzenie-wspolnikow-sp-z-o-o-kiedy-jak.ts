@@ -10,7 +10,7 @@
 import type { BlogPost } from "@/lib/blog"
 import { DISCLAIMER } from "@/content/blog/_disclaimer"
 
-const post: BlogPost = {
+const blogPost: BlogPost = {
   slug: "zgromadzenie-wspolnikow-sp-z-o-o-kiedy-jak",
   title: "Zgromadzenie wspólników sp. z o.o. — kiedy i jak zwołać",
   description:
@@ -103,4 +103,4 @@ const post: BlogPost = {
   `,
 }
 
-export default post
+export default blogPost

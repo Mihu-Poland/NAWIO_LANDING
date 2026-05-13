@@ -11,7 +11,7 @@
 import type { BlogPost } from "@/lib/blog"
 import { DISCLAIMER } from "@/content/blog/_disclaimer"
 
-const post: BlogPost = {
+const blogPost: BlogPost = {
   slug: "uchwala-sp-z-o-o-wzor",
   title: "Uchwała sp. z o.o. — wzór i instrukcja krok po kroku",
   description:
@@ -100,4 +100,4 @@ Przewodniczący Zgromadzenia:    Protokolant:
   `,
 }
 
-export default post
+export default blogPost

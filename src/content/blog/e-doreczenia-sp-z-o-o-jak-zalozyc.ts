@@ -7,7 +7,7 @@
 
 import type { BlogPost } from "@/lib/blog"
 
-const post: BlogPost = {
+const blogPost: BlogPost = {
   slug: "e-doreczenia-sp-z-o-o-jak-zalozyc",
   title: "e-Doręczenia sp. z o.o. – jak założyć w 2026 [Poradnik]",
   description: "e-Doręczenia obowiązkowe dla spółek z o.o. od kwietnia 2025. Sprawdź krok po kroku jak założyć adres, uniknąć kar i nie przegapić terminów urzędowych.",
@@ -200,4 +200,4 @@ const post: BlogPost = {
   `,
 }
 
-export default post
+export default blogPost
