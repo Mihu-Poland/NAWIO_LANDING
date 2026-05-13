@@ -8,11 +8,13 @@
  * Wszystkie artykuły żyją w tablicy POSTS w src/lib/blog.ts.
  * Skrypt dopisuje nowy obiekt BlogPost przed zamykającym `]` tej tablicy.
  *
- * DLACZEGO DWA WYWOŁANIA CLAUDE:
- * Jedno wywołanie zwracające JSON z HTML w środku powoduje błędy parsowania
- * (cudzysłowy w atrybutach HTML łamią JSON). Dwa wywołania = zero problemów.
+ * FLOW (4 kroki):
  *   Wywołanie 1 (+ web_search): wybór tematu → TYLKO metadane JSON
- *   Wywołanie 2: treść artykułu → TYLKO czysty HTML
+ *   Wywołanie 2: treść artykułu → TYLKO czysty HTML (z constraints z nawio-capabilities.md)
+ *   Wywołanie 3: review sekcji Nawio → JSON { ideas[], revised? }
+ *     - ideas   → GitHub Issue jako backlog feature requests
+ *     - revised → poprawiony HTML sekcji Nawio (jeśli coś wymyślono)
+ *   PR + email
  *
  * @author Mihu
  * @updated 2026-05-13
@@ -26,16 +28,17 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, "..")
 
 const CONFIG = {
-  anthropicApiKey: process.env.ANTHROPIC_API_KEY,
-  githubToken:     process.env.GITHUB_TOKEN,
-  githubRepo:      process.env.GITHUB_REPO,
-  resendApiKey:    process.env.RESEND_API_KEY,
-  dryRun:          process.env.DRY_RUN === "true",
-  emailTo:         "helpdesk@bearstone.pl",
-  emailFrom:       "hej@nawio.pl",
-  blogFile:        path.join(ROOT, "src/lib/blog.ts"),
-  topicsFile:      path.join(ROOT, "scripts/blog-topics.json"),
-  model:           "claude-sonnet-4-5",
+  anthropicApiKey:  process.env.ANTHROPIC_API_KEY,
+  githubToken:      process.env.GITHUB_TOKEN,
+  githubRepo:       process.env.GITHUB_REPO,
+  resendApiKey:     process.env.RESEND_API_KEY,
+  dryRun:           process.env.DRY_RUN === "true",
+  emailTo:          "helpdesk@bearstone.pl",
+  emailFrom:        "hej@nawio.pl",
+  blogFile:         path.join(ROOT, "src/lib/blog.ts"),
+  topicsFile:       path.join(ROOT, "scripts/blog-topics.json"),
+  capabilitiesFile: path.join(ROOT, "scripts/nawio-capabilities.md"),
+  model:            "claude-sonnet-4-5",
 }
 
 // ---------------------------------------------------------------------------
@@ -94,7 +97,7 @@ async function callClaude({ system, user, maxTokens = 4000, useWebSearch = false
 }
 
 // ---------------------------------------------------------------------------
-// TEMATY I ISTNIEJĄCE SLUGI
+// TEMATY, ISTNIEJĄCE SLUGI, CAPABILITIES
 // ---------------------------------------------------------------------------
 
 /** Wczytuje listę tematów z blog-topics.json. */
@@ -114,6 +117,11 @@ function loadExistingSlugs() {
   const slugs = matches.map((m) => m[1])
   console.log(`✅ Istniejące slugi (${slugs.length}): ${slugs.join(", ")}`)
   return slugs
+}
+
+/** Wczytuje opis aktualnych możliwości Nawio z nawio-capabilities.md. */
+function loadCapabilities() {
+  return fs.readFileSync(CONFIG.capabilitiesFile, "utf-8")
 }
 
 // ---------------------------------------------------------------------------
@@ -165,9 +173,12 @@ ${available.map((t) => `• ${t.slug} → "${t.keyword}"`).join("\n")}`,
 
 /**
  * Generuje treść artykułu jako HTML.
+ * Capabilities są wstrzykiwane do system promptu, żeby sekcja "Jak Nawio pomaga"
+ * opisywała WYŁĄCZNIE istniejące funkcje.
  * @param {object} meta — wynik wywołania 1
+ * @param {string} capabilities — zawartość nawio-capabilities.md
  */
-async function generateContent(meta) {
+async function generateContent(meta, capabilities) {
   console.log("🤖 Wywołanie 2: generowanie treści artykułu...")
 
   const content = await callClaude({
@@ -178,6 +189,11 @@ Struktura: H2 i H3, krótkie akapity, listy punktowane tam gdzie pasują.
 Zwracasz TYLKO czysty HTML — żadnego tekstu przed ani po.
 Zacznij bezpośrednio od pierwszego <h2>. Nie dodawaj <article>, <html>, <body>, <head>.
 Używaj WYŁĄCZNIE pojedynczych cudzysłowów w atrybutach HTML (class='...', nie class="...").
+
+WAŻNE — sekcja "Jak Nawio pomaga":
+Nawio to aplikacja dla właścicieli sp. z o.o. Oto co Nawio FAKTYCZNIE potrafi — opisz TYLKO te funkcje, nic więcej:
+${capabilities}
+
 Zawsze kończ artykuł dosłownie tym disclaimerem — bez żadnych zmian:
 <div class='disclaimer'><p>Treści publikowane przez Nawio mają charakter informacyjny i nie stanowią porady prawnej ani podatkowej. BearStone sp. z o.o. nie ponosi odpowiedzialności za skutki działań podjętych na ich podstawie.</p></div>`,
     user: `Napisz artykuł blogowy na podstawie poniższych danych:
@@ -185,12 +201,92 @@ Tytuł: ${meta.title}
 Opis SEO: ${meta.description}
 Kategoria: ${meta.category}
 
-Przed disclaimerem dodaj krótki akapit (2-3 zdania) opisujący, jak Nawio (nawio.pl) —
-korporacyjny nawigator dla właścicieli sp. z o.o. — pomaga z dokumentacją i terminami.`,
+Przed disclaimerem dodaj sekcję <h2>Jak Nawio pomaga właścicielom sp. z o.o.?</h2>
+z 2-3 akapitami opisującymi TYLKO istniejące funkcje Nawio (patrz lista wyżej).`,
   })
 
   console.log(`✅ Treść wygenerowana (${content.length} znaków)`)
   return content
+}
+
+// ---------------------------------------------------------------------------
+// WYWOŁANIE 3: review sekcji Nawio — JSON { ideas, revised }
+// ---------------------------------------------------------------------------
+
+/**
+ * Porównuje sekcję "Jak Nawio pomaga" z listą rzeczywistych możliwości.
+ * Zwraca pomysły na nowe funkcje (do backlogu) i ewentualnie poprawiony HTML.
+ *
+ * @param {object} meta
+ * @param {string} content — pełny HTML artykułu
+ * @param {string} capabilities
+ * @returns {{ ideas: string[], revised: string }}
+ */
+async function reviewNawioSection(meta, content, capabilities) {
+  console.log("🤖 Wywołanie 3: review sekcji Nawio + ekstrakcja pomysłów na backlog...")
+
+  // Wyciągamy sekcję Nawio prostym regex — od nagłówka do <div class='disclaimer'> lub kolejnego h2
+  const nawioMatch = content.match(
+    /<h[23][^>]*>[^<]*[Nn]awio[^<]*<\/h[23]>([\s\S]*?)(?=<h[23]|<div class=['"]disclaimer)/i
+  )
+  const nawioSection = nawioMatch ? nawioMatch[0] : content.slice(-800)
+
+  const rawText = await callClaude({
+    maxTokens: 1500,
+    system: `Jesteś product managerem i content edytorem aplikacji Nawio.
+Zwróć WYŁĄCZNIE poprawny JSON — zero tekstu przed i po, zero markdown, zero backticks.
+Format:
+{"ideas":["krótki opis pomysłu na nową funkcję"],"revised":""}
+
+Zasady:
+- "ideas": tablica stringów — każdy to opis funkcji opisanej w artykule, której Nawio jeszcze nie ma. Jeśli wszystko się zgadza — zwróć puste [].
+- "revised": jeśli sekcja opisuje nieistniejące funkcje — przepisz ją jako HTML (tylko <p>, <ul>, <li>, <strong>, cudzysłowy jako \\"). Jeśli wszystko się zgadza — zwróć pusty string "".`,
+    user: `Artykuł: "${meta.title}"
+
+Co Nawio FAKTYCZNIE potrafi (źródło prawdy):
+${capabilities}
+
+Sekcja artykułu o Nawio do sprawdzenia:
+${nawioSection}
+
+Sprawdź: czy sekcja opisuje funkcje których NIE MA w Nawio?
+Jeśli tak: wpisz je w "ideas" i przepisz "revised" używając TYLKO istniejących funkcji.
+Jeśli nie: zwróć {"ideas":[],"revised":""}.`,
+  })
+
+  try {
+    const jsonStart = rawText.indexOf("{")
+    const jsonEnd   = rawText.lastIndexOf("}")
+    if (jsonStart === -1 || jsonEnd === -1) throw new Error("brak JSON")
+    const parsed = JSON.parse(rawText.slice(jsonStart, jsonEnd + 1))
+    const ideas   = Array.isArray(parsed.ideas) ? parsed.ideas.filter(Boolean) : []
+    const revised = typeof parsed.revised === "string" ? parsed.revised.trim() : ""
+    console.log(`✅ Review: ${ideas.length} pomysł(ów) na backlog, rewizja sekcji: ${revised ? "TAK" : "nie potrzeba"}`)
+    return { ideas, revised }
+  } catch (err) {
+    console.warn(`⚠️  Nie udało się sparsować JSON z review (${err.message}) — pomijam rewizję`)
+    return { ideas: [], revised: "" }
+  }
+}
+
+/**
+ * Jeśli review zwrócił revised HTML — podmieniamy sekcję Nawio w pełnym content.
+ * @param {string} content
+ * @param {string} revised — poprawiony HTML sekcji Nawio (bez h2 nagłówka)
+ * @returns {string}
+ */
+function applyRevisedNawioSection(content, revised) {
+  // Podmień wszystko między nagłówkiem Nawio a disclaimerem / następnym h2
+  const replaced = content.replace(
+    /(<h[23][^>]*>[^<]*[Nn]awio[^<]*<\/h[23]>)([\s\S]*?)(?=<h[23]|<div class=['"]disclaimer)/i,
+    `$1\n${revised}\n`
+  )
+  if (replaced === content) {
+    console.warn("⚠️  Nie znaleziono sekcji Nawio do podmiany — content bez zmian")
+  } else {
+    console.log("✅ Sekcja Nawio podmieniona na poprawioną wersję")
+  }
+  return replaced
 }
 
 // ---------------------------------------------------------------------------
@@ -201,7 +297,7 @@ korporacyjny nawigator dla właścicieli sp. z o.o. — pomaga z dokumentacją i
  * Buduje string TypeScript reprezentujący nowy obiekt BlogPost
  * i wstrzykuje go do tablicy POSTS w src/lib/blog.ts przed zamykającym `]`.
  * @param {object} meta
- * @param {string} content — czysty HTML z wywołania 2
+ * @param {string} content — czysty HTML
  * @returns {{ today: string }}
  */
 function injectPostIntoBlogTs(meta, content) {
@@ -234,7 +330,6 @@ ${escapedContent}
   let blogContent = fs.readFileSync(CONFIG.blogFile, "utf-8")
 
   // Szukamy ostatniego `]` zamykającego tablicę POSTS.
-  // Tablica kończy się wzorcem:  ,\n]\n\n// ---
   const insertionMarker = "\n]\n"
   const insertionIndex = blogContent.lastIndexOf(insertionMarker)
   if (insertionIndex === -1) {
@@ -271,7 +366,6 @@ async function createGithubPR(meta, today) {
     "Content-Type":         "application/json",
   }
 
-  // Pobierz SHA HEAD main
   const refRes = await fetch(
     `https://api.github.com/repos/${owner}/${repo}/git/ref/heads/main`,
     { headers }
@@ -279,14 +373,12 @@ async function createGithubPR(meta, today) {
   if (!refRes.ok) throw new Error(`GitHub ref error: ${await refRes.text()}`)
   const baseSha = (await refRes.json()).object.sha
 
-  // Utwórz branch
   const branchRes = await fetch(
     `https://api.github.com/repos/${owner}/${repo}/git/refs`,
     { method: "POST", headers, body: JSON.stringify({ ref: `refs/heads/${branchName}`, sha: baseSha }) }
   )
   if (!branchRes.ok) throw new Error(`GitHub create branch: ${await branchRes.text()}`)
 
-  // Pobierz SHA drzewa bazowego commitu
   const commitRes = await fetch(
     `https://api.github.com/repos/${owner}/${repo}/git/commits/${baseSha}`,
     { headers }
@@ -294,7 +386,6 @@ async function createGithubPR(meta, today) {
   if (!commitRes.ok) throw new Error(`GitHub commit fetch: ${await commitRes.text()}`)
   const baseTreeSha = (await commitRes.json()).tree.sha
 
-  // Utwórz nowe drzewo ze zaktualizowanym blog.ts
   const blogContent = fs.readFileSync(CONFIG.blogFile, "utf-8")
   const treeRes = await fetch(
     `https://api.github.com/repos/${owner}/${repo}/git/trees`,
@@ -312,7 +403,6 @@ async function createGithubPR(meta, today) {
   if (!treeRes.ok) throw new Error(`GitHub create tree: ${await treeRes.text()}`)
   const treeSha = (await treeRes.json()).sha
 
-  // Utwórz commit
   const newCommitRes = await fetch(
     `https://api.github.com/repos/${owner}/${repo}/git/commits`,
     {
@@ -328,14 +418,12 @@ async function createGithubPR(meta, today) {
   if (!newCommitRes.ok) throw new Error(`GitHub create commit: ${await newCommitRes.text()}`)
   const newCommitSha = (await newCommitRes.json()).sha
 
-  // Przesuń HEAD brancha
   const patchRes = await fetch(
     `https://api.github.com/repos/${owner}/${repo}/git/refs/heads/${branchName}`,
     { method: "PATCH", headers, body: JSON.stringify({ sha: newCommitSha }) }
   )
   if (!patchRes.ok) throw new Error(`GitHub patch ref: ${await patchRes.text()}`)
 
-  // Otwórz PR
   const prRes = await fetch(
     `https://api.github.com/repos/${owner}/${repo}/pulls`,
     {
@@ -351,7 +439,7 @@ async function createGithubPR(meta, today) {
           `**Kategoria:** ${meta.category}`,
           `**Czas czytania:** ${meta.readingTime} min`,
           "",
-          `**Opis SEO:**`,
+          "**Opis SEO:**",
           meta.description,
           "",
           "---",
@@ -374,16 +462,92 @@ async function createGithubPR(meta, today) {
 }
 
 // ---------------------------------------------------------------------------
+// GITHUB ISSUE — backlog pomysłów na nowe funkcje
+// ---------------------------------------------------------------------------
+
+/**
+ * Tworzy Issue w GitHub z pomysłami na nowe funkcje wyciągniętymi przez review.
+ * Issue trafia bezpośrednio na main — bez brancha, bo to tylko opis pomysłu.
+ * @param {object} meta
+ * @param {string[]} ideas
+ * @returns {string} URL do Issue
+ */
+async function createGithubIssue(meta, ideas) {
+  const [owner, repo] = CONFIG.githubRepo.split("/")
+  const headers = {
+    "Authorization":        `Bearer ${CONFIG.githubToken}`,
+    "Accept":               "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+    "Content-Type":         "application/json",
+  }
+
+  const body = [
+    "## Pomysły na nowe funkcje Nawio",
+    "",
+    "Podczas generowania artykułu bloga AI opisało funkcje, których Nawio jeszcze nie ma.",
+    "Poniższe pomysły mogą trafić do roadmapy.",
+    "",
+    `**Źródło:** artykuł _${meta.title}_ (\`/blog/${meta.slug}\`)`,
+    "",
+    "### Pomysły:",
+    ...ideas.map((idea) => `- ${idea}`),
+    "",
+    "---",
+    "_Wygenerowane automatycznie przez scripts/generate-blog-post.mjs_",
+  ].join("\n")
+
+  const issueRes = await fetch(
+    `https://api.github.com/repos/${owner}/${repo}/issues`,
+    {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        title: `[Blog Backlog] Pomysły z artykułu: ${meta.title}`,
+        body,
+        labels: ["backlog", "enhancement"],
+      }),
+    }
+  )
+
+  // Etykiety mogą nie istnieć w repo — jeśli błąd z labels, spróbuj bez nich
+  if (!issueRes.ok) {
+    const errText = await issueRes.text()
+    console.warn(`⚠️  Issue z labels nie poszło (${errText.slice(0, 100)}), próbuję bez labels...`)
+    const retryRes = await fetch(
+      `https://api.github.com/repos/${owner}/${repo}/issues`,
+      { method: "POST", headers, body: JSON.stringify({ title: `[Blog Backlog] Pomysły z artykułu: ${meta.title}`, body }) }
+    )
+    if (!retryRes.ok) throw new Error(`GitHub create issue: ${await retryRes.text()}`)
+    const retryData = await retryRes.json()
+    console.log(`✅ Issue (backlog) utworzone: ${retryData.html_url}`)
+    return retryData.html_url
+  }
+
+  const issueData = await issueRes.json()
+  console.log(`✅ Issue (backlog) utworzone: ${issueData.html_url}`)
+  return issueData.html_url
+}
+
+// ---------------------------------------------------------------------------
 // EMAIL (Resend)
 // ---------------------------------------------------------------------------
 
 /**
- * Wysyła email z linkiem do PR na helpdesk@bearstone.pl.
+ * Wysyła email z linkiem do PR i (opcjonalnie) Issue na helpdesk@bearstone.pl.
  * @param {object} meta
  * @param {string} prUrl
+ * @param {string|null} issueUrl
  */
-async function sendEmail(meta, prUrl) {
+async function sendEmail(meta, prUrl, issueUrl) {
   console.log(`📧 Wysyłam email na ${CONFIG.emailTo}...`)
+
+  const backlogSection = issueUrl
+    ? `<div style="margin-top:16px;padding:12px;background:#fef3c7;border-radius:6px;border:1px solid #fcd34d">
+        <p style="margin:0 0 8px;font-weight:600;color:#92400e">Nowe pomysły na backlog</p>
+        <p style="margin:0;font-size:14px;color:#78350f">AI opisało w artykule funkcje, których Nawio jeszcze nie ma. Pomysły trafiły do Issues na GitHubie.</p>
+        <a href="${issueUrl}" style="display:inline-block;margin-top:8px;color:#2563eb;font-size:14px">Zobacz Issue →</a>
+      </div>`
+    : ""
 
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -408,8 +572,9 @@ async function sendEmail(meta, prUrl) {
       <tr><td style="padding:6px 0;color:#6b7280">Czas czytania</td><td style="padding:6px 0">${meta.readingTime} min</td></tr>
     </table>
     <p style="color:#374151;margin-bottom:20px"><strong>Opis SEO:</strong><br>${meta.description}</p>
+    ${backlogSection}
     <a href="${prUrl}"
-       style="display:inline-block;background:#2563eb;color:white;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:600">
+       style="display:inline-block;background:#2563eb;color:white;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:600;margin-top:16px">
       Otwórz PR na GitHub
     </a>
     <p style="color:#9ca3af;font-size:12px;margin-top:24px">
@@ -435,7 +600,7 @@ async function main() {
   console.log("\n🚀 Nawio Blog Generator — start\n")
 
   if (CONFIG.dryRun) {
-    console.log("ℹ️  DRY RUN — PR i email zostaną pominięte\n")
+    console.log("ℹ️  DRY RUN — PR, Issue i email zostaną pominięte\n")
   }
 
   try {
@@ -443,29 +608,58 @@ async function main() {
 
     const topics        = loadTopics()
     const existingSlugs = loadExistingSlugs()
+    const capabilities  = loadCapabilities()
 
-    const meta    = await chooseTopicAndGetMeta(topics, existingSlugs)
+    // KROK 1: wybór tematu + metadane
+    const meta = await chooseTopicAndGetMeta(topics, existingSlugs)
 
     // 60s przerwa między wywołaniami Claude (rate-limit safety)
     console.log("⏳ Czekam 60 s przed wywołaniem 2 (rate limit)...")
     await new Promise((r) => setTimeout(r, 60_000))
 
-    const content  = await generateContent(meta)
+    // KROK 2: generowanie treści (z capabilities w prompcie)
+    let content = await generateContent(meta, capabilities)
+
+    // KROK 3: review sekcji Nawio — szuka "fantazji", wyciąga pomysły na backlog
+    const { ideas, revised } = await reviewNawioSection(meta, content, capabilities)
+
+    // Jeśli review poprawił sekcję — podmień w content
+    if (revised) {
+      content = applyRevisedNawioSection(content, revised)
+    }
+
+    // Wstrzyknięcie do blog.ts
     const { today } = injectPostIntoBlogTs(meta, content)
 
     if (CONFIG.dryRun) {
-      console.log("\n✅ DRY RUN zakończony — blog.ts zaktualizowany lokalnie, bez PR i emaila.\n")
+      if (ideas.length > 0) {
+        console.log("\n💡 Pomysły na backlog (dry run — nie tworzę Issue):")
+        ideas.forEach((idea, i) => console.log(`   ${i + 1}. ${idea}`))
+      }
+      console.log("\n✅ DRY RUN zakończony — blog.ts zaktualizowany lokalnie.\n")
       return
     }
 
+    // KROK 4: PR
     const prUrl = await createGithubPR(meta, today)
-    await sendEmail(meta, prUrl)
+
+    // KROK 5: Issue z backlogiem (tylko jeśli są pomysły)
+    let issueUrl = null
+    if (ideas.length > 0) {
+      console.log(`💡 Znaleziono ${ideas.length} pomysł(ów) na nowe funkcje — tworzę Issue...`)
+      issueUrl = await createGithubIssue(meta, ideas)
+    }
+
+    // KROK 6: email
+    await sendEmail(meta, prUrl, issueUrl)
 
     console.log(`\n✅ Gotowe! Zmerguj PR żeby opublikować artykuł na nawio.pl 🚀\n`)
+    if (issueUrl) {
+      console.log(`💡 Backlog Issue: ${issueUrl}\n`)
+    }
   } catch (err) {
     console.error("\n❌ BŁĄD:", err.message)
 
-    // Błędowy email — best-effort, nie rzuca dalej
     try {
       await fetch("https://api.resend.com/emails", {
         method: "POST",
