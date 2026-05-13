@@ -481,12 +481,12 @@ Przewodniczący Zgromadzenia:         Protokolant:
     <li>Archiwizację dowodów doręczenia</li>
   </ul>
 
-  <h2>Jak Nawio pomaga przy e-Doręczeniach?</h2>
+  <h2>Jak Nawio pomaga właścicielom sp. z o.o.?</h2>
   <p>
-    Nawio pilnuje, żebyś nie zapomniał o obowiązkach, w tym o aktywacji i aktualizacji
-    adresu e-Doręczeń. W panelu Nawio znajdziesz przypomnienie o tym obowiązku
-    i bezpośrednie linki do odpowiednich formularzy gov.pl — bez szukania w zakamarkach
-    urzędowych portali.
+    Nawio to korporacyjny nawigator dla właścicieli sp. z o.o. — pilnuje terminów,
+    generuje dokumenty i wysyła e-mail z przypomnieniem, zanim cokolwiek Cię ominie.
+    Obowiązek założenia skrzynki e-Doręczeń to jeden z wielu terminów, który warto
+    mieć pod kontrolą — obok ZZW, zgłoszeń do KRS i złożenia sprawozdania finansowego.
   </p>
   <p>
     Nawio to nawigator, nie kancelaria. Ale dobry nawigator nie pozwoli Ci przegapić
