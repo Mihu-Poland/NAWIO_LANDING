@@ -144,9 +144,9 @@ Przed disclaimerem dodaj krótki akapit o tym jak Nawio (nawio.pl) pomaga właś
 // ---------------------------------------------------------------------------
 function saveArticleFile(meta, content) {
   const today = new Date().toISOString().split("T")[0]
-  const varName = meta.slug
+  const varName = "post" + meta.slug
     .split("-")
-    .map((w, i) => i === 0 ? w : w.charAt(0).toUpperCase() + w.slice(1))
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join("")
 
   const fileContent = `/**
