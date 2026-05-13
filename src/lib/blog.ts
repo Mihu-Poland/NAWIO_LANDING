@@ -12,8 +12,8 @@
  * - Każdy artykuł ma disclaimer na dole (wymóg prawny Nawio)
  * - readingTime liczymy z grubsza: ~200 słów/minutę
  *
- * @author Jadźka (Cursor AI persona) + Mihu
- * @updated 2026-05-12
+ * @author Mihu
+ * @updated 2026-05-13
  */
 
 // ---------------------------------------------------------------------------
@@ -347,7 +347,159 @@ Przewodniczący Zgromadzenia:         Protokolant:
   },
 
   // =========================================================================
-  // ARTYKUŁ 3: Terminy KRS 2026
+  // ARTYKUŁ 3: e-Doręczenia dla sp. z o.o. — jak założyć
+  // =========================================================================
+  {
+    slug: "e-doreczenia-sp-z-o-o-jak-zalozyc",
+    title: "e-Doręczenia dla sp. z o.o. — jak założyć krok po kroku",
+    description:
+      "Obowiązek e-Doręczeń dla spółek z o.o. w 2026 r. Dowiedz się, jak założyć skrzynkę na gov.pl, zaktualizować adres w KRS i co grozi za brak rejestracji.",
+    publishedAt: "2026-05-13",
+    category: "krs",
+    readingTime: 6,
+    content: `
+<article>
+  <h2>Czym są e-Doręczenia i dlaczego dotyczą Twojej spółki?</h2>
+  <p>
+    e-Doręczenia to elektroniczny odpowiednik listu poleconego z potwierdzeniem odbioru.
+    Od 2026 roku każda spółka z ograniczoną odpowiedzialnością zarejestrowana w KRS
+    jest zobowiązana posiadać <strong>adres do e-Doręczeń (AED)</strong> — wpisany do Bazy
+    Adresów Elektronicznych (BAE).
+  </p>
+  <p>
+    Korespondencja z sądami, urzędami skarbowymi, ZUS-em czy innymi podmiotami publicznymi
+    trafia odtąd właśnie na ten adres. Nie na papier, nie na zwykłego maila — na dedykowaną,
+    prawnie równoważną skrzynkę e-Doręczeń.
+  </p>
+  <p>
+    Brak adresu nie zwalnia Cię z odbioru. Sąd może uznać pismo za skutecznie doręczone
+    nawet jeśli fizycznie go nie odebrałeś — to klasyczna pułapka dla spółek, które
+    zignorują obowiązek.
+  </p>
+
+  <h2>Kto musi założyć skrzynkę e-Doręczeń?</h2>
+  <p>
+    Obowiązek posiadania adresu do e-Doręczeń spoczywa na:
+  </p>
+  <ul>
+    <li><strong>Wszystkich spółkach zarejestrowanych w KRS</strong> — w tym sp. z o.o., S.A., spółkach jawnych, partnerskich, komandytowych i komandytowo-akcyjnych</li>
+    <li>Przedsiębiorcach wpisanych do CEIDG (od odrębnego terminu)</li>
+    <li>Podmiotach publicznych, takich jak urzędy i sądy (te już mają obowiązek)</li>
+  </ul>
+  <p>
+    Jeśli prowadzisz sp. z o.o. — niezależnie od wielkości, branży czy obrotów —
+    ten obowiązek Cię dotyczy.
+  </p>
+
+  <h2>Jak założyć skrzynkę e-Doręczeń dla sp. z o.o.? (krok po kroku)</h2>
+
+  <h3>Krok 1: Zaloguj się na gov.pl</h3>
+  <p>
+    Wejdź na <strong>moje.gov.pl</strong> i zaloguj się jako reprezentant spółki.
+    Możesz użyć:
+  </p>
+  <ul>
+    <li>Profilu Zaufanego (jeśli go masz)</li>
+    <li>Kwalifikowanego podpisu elektronicznego</li>
+    <li>e-Dowodu osobistego z warstwą elektroniczną</li>
+  </ul>
+
+  <h3>Krok 2: Znajdź wniosek o założenie AED dla podmiotu</h3>
+  <p>
+    Na gov.pl znajdź usługę <em>„Założenie adresu do e-Doręczeń dla podmiotu niepublicznego"</em>
+    (lub skorzystaj z bezpośredniego linku: edoreczenia.gov.pl). Wybierz opcję dla
+    <strong>podmiotu rejestrowego (KRS)</strong>.
+  </p>
+
+  <h3>Krok 3: Wypełnij wniosek</h3>
+  <p>
+    Potrzebujesz:
+  </p>
+  <ul>
+    <li>Numeru KRS spółki</li>
+    <li>NIP spółki</li>
+    <li>Danych reprezentanta składającego wniosek (imię, nazwisko, PESEL)</li>
+    <li>Adresu e-mail do powiadomień (nie będzie to AED — tylko adres pomocniczy)</li>
+  </ul>
+  <p>
+    System automatycznie weryfikuje, czy wnioskodawca jest umocowany do reprezentowania
+    spółki (na podstawie danych KRS). Dlatego osoba składająca wniosek musi być
+    wpisana w KRS jako uprawniona do reprezentacji.
+  </p>
+
+  <h3>Krok 4: Podpisz i wyślij wniosek</h3>
+  <p>
+    Podpisz wniosek profilem zaufanym lub kwalifikowanym podpisem elektronicznym,
+    a następnie wyślij. Wnioski są rozpatrywane co do zasady <strong>w ciągu 3 dni roboczych</strong>.
+  </p>
+
+  <h3>Krok 5: Odbierz adres do e-Doręczeń</h3>
+  <p>
+    Po weryfikacji wniosku otrzymasz potwierdzenie na podany adres e-mail.
+    Twoja skrzynka e-Doręczeń będzie dostępna w systemie edoreczenia.gov.pl.
+    Adres ma format: <code>AE:PL-[numer]</code>.
+  </p>
+
+  <h3>Krok 6: Zaktualizuj adres w KRS</h3>
+  <p>
+    Po uzyskaniu AED spółka ma obowiązek <strong>wpisać go do rejestru KRS</strong>.
+    Składasz wniosek przez Portal Rejestrów Sądowych (PRS) — formularz KRS-Z3
+    lub odpowiedni dla zmiany danych spółki. Od momentu wpisu do KRS adres staje się
+    oficjalnym adresem do korespondencji z podmiotami publicznymi.
+  </p>
+
+  <h2>Ile kosztuje założenie skrzynki e-Doręczeń?</h2>
+  <p>
+    Założenie adresu do e-Doręczeń dla spółki jest <strong>bezpłatne</strong>.
+    Nie ma opłat za sam adres ani za odbieranie korespondencji. Płatne mogą być natomiast
+    usługi kwalifikowanych dostawców e-Doręczeń (KDWU) — komercyjnych podmiotów
+    oferujących skrzynkę e-Doręczeń jako alternatywę do systemu rządowego.
+    W większości przypadków adres na gov.pl w zupełności wystarczy.
+  </p>
+
+  <h2>Co grozi za brak e-Doręczeń?</h2>
+  <p>
+    Konsekwencje są poważniejsze niż mogłoby się wydawać:
+  </p>
+  <ul>
+    <li><strong>Fikcja doręczenia</strong> — sąd lub urząd może uznać pismo za doręczone skutecznie, nawet jeśli spółka nie odebrała wiadomości, bo nie ma skrzynki</li>
+    <li><strong>Przegapione terminy procesowe</strong> — np. termin na wniesienie sprzeciwu od nakazu zapłaty</li>
+    <li><strong>Grzywna od KRS</strong> — za niedopełnienie obowiązku aktualizacji danych rejestrowych</li>
+    <li><strong>Problemy z postępowaniami administracyjnymi</strong> — urzędy mogą odmówić uznania korespondencji papierowej tam, gdzie e-Doręczenia są obligatoryjne</li>
+  </ul>
+
+  <h2>e-Doręczenia a zwykły e-mail — jaka różnica?</h2>
+  <p>
+    Zwykły e-mail nie ma mocy prawnej doręczenia. e-Doręczenia to system oparty
+    na regulacji unijnej (rozporządzenie eIDAS) i polskiej ustawie o doręczeniach
+    elektronicznych, który zapewnia:
+  </p>
+  <ul>
+    <li>Pewność daty i godziny wysłania oraz odbioru</li>
+    <li>Integralność przesyłanej treści (nikt jej nie zmienił po drodze)</li>
+    <li>Pełną moc prawną — równoważną z listem poleconym z potwierdzeniem odbioru</li>
+    <li>Archiwizację dowodów doręczenia</li>
+  </ul>
+
+  <h2>Jak Nawio pomaga przy e-Doręczeniach?</h2>
+  <p>
+    Nawio pilnuje, żebyś nie zapomniał o obowiązkach, w tym o aktywacji i aktualizacji
+    adresu e-Doręczeń. W panelu Nawio znajdziesz przypomnienie o tym obowiązku
+    i bezpośrednie linki do odpowiednich formularzy gov.pl — bez szukania w zakamarkach
+    urzędowych portali.
+  </p>
+  <p>
+    Nawio to nawigator, nie kancelaria. Ale dobry nawigator nie pozwoli Ci przegapić
+    skrętu, który kosztuje miesiąc spóźnienia i kilka tysięcy złotych grzywny.
+  </p>
+
+  ${DISCLAIMER}
+</article>
+    `,
+  },
+
+  // =========================================================================
+  // ARTYKUŁ 4: Terminy KRS 2026
   // =========================================================================
   {
     slug: "terminy-krs-2026",
