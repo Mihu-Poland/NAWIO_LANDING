@@ -44,6 +44,6 @@ export const POSTS: BlogPost[] = [
   uchwala,
   zgromadzenie,
   terminyKrs,
-]  postEdoreczenia,
-
+  postEdoreczenia,
+]
 // [POSTS:END]
