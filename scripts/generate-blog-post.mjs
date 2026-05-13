@@ -306,7 +306,7 @@ async function main() {
     const topics = loadTopics()
     const existingSlugs = loadExistingSlugs()
     const meta = await chooseTopicAndGetMeta(topics, existingSlugs)
-    const content = await generateContent(meta)
+    console.log("⏳ Czekam 60s przed wywołaniem 2 (rate limit)..."); await new Promise(r => setTimeout(r, 60000)); const content = await generateContent(meta)
     const { varName, today } = saveArticleFile(meta, content)
     updateIndex(meta, varName)
     const prUrl = await createGithubPR(meta, today)
