@@ -31,7 +31,7 @@ import type { BlogPost } from "@/lib/blog"
 import uchwala from "./uchwala-sp-z-o-o-wzor"
 import zgromadzenie from "./zgromadzenie-wspolnikow-sp-z-o-o-kiedy-jak"
 import terminyKrs from "./terminy-krs-2026"
-import eDoreczeniaSpZOOJakZalozyc from "./e-doreczenia-sp-z-o-o-jak-zalozyc"
+import postEdoreczenia from "./e-doreczenia-sp-z-o-o-jak-zalozyc"
 // [IMPORTS:END]
 
 // ---------------------------------------------------------------------------
@@ -44,6 +44,6 @@ export const POSTS: BlogPost[] = [
   uchwala,
   zgromadzenie,
   terminyKrs,
-]  eDoreczeniaSpZOOJakZalozyc,
+]  postEdoreczenia,
 
 // [POSTS:END]
