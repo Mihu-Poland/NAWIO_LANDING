@@ -54,7 +54,7 @@ const CONFIG = {
   emailFrom:       "nawio-blog@nawio.pl",          // zweryfikowana domena w Resend
   contentDir:      path.join(ROOT, "src/content/blog"),
   indexFile:       path.join(ROOT, "src/content/blog/index.ts"),
-  model:           "claude-sonnet-4-5",
+  model:           "claude-sonnet-4-20250514",
 }
 
 // ---------------------------------------------------------------------------
@@ -123,7 +123,7 @@ Twoje artykuły:
 Disclaimer (wstaw dosłownie jako ostatni element):
 <div class="disclaimer"><p>Treści publikowane przez Nawio mają charakter informacyjny i nie stanowią porady prawnej ani podatkowej. BearStone sp. z o.o. nie ponosi odpowiedzialności za skutki działań podjętych na ich podstawie.</p></div>
 
-Odpowiadaj WYŁĄCZNIE w formacie JSON, bez markdown, bez backticks. W polu content używaj WYŁĄCZNIE pojedynczych cudzysłowów w atrybutach HTML (class='disclaimer' zamiast class="disclaimer"). Nigdy nie używaj podwójnych cudzysłowów wewnątrz wartości JSON. Struktura:
+Odpowiadaj WYŁĄCZNIE w formacie JSON, bez markdown, bez backticks. Struktura:
 {
   "slug": "string (kebab-case, tylko lowercase i myślniki)",
   "title": "string (max 60 znaków, keyword-rich)",
@@ -151,7 +151,7 @@ ${topicsJson}
     },
     body: JSON.stringify({
       model: CONFIG.model,
-      max_tokens: 16000,
+      max_tokens: 8000,
       system: systemPrompt,
       tools: [
         {
@@ -182,7 +182,7 @@ ${topicsJson}
   console.log("✅ Claude odpowiedział, parsuję JSON...")
 
   // Czyścimy ewentualne backticki jeśli model nie posłuchał
-  const jsonStart = rawText.indexOf("{"); const jsonEnd = rawText.lastIndexOf("}"); if (jsonStart === -1 || jsonEnd === -1) { throw new Error("Brak JSON w odpowiedzi Claude") }; const cleanJson = rawText.slice(jsonStart, jsonEnd + 1)
+  const cleanJson = rawText.replace(/^```json\s*/i, "").replace(/```\s*$/i, "").trim()
 
   let article
   try {
