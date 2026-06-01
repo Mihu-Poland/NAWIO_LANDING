@@ -64,7 +64,7 @@ function validateEnv() {
  * @param {number} [opts.maxTokens]
  * @param {boolean} [opts.useWebSearch]
  */
-async function callClaude({ system, user, maxTokens = 4000, useWebSearch = false, logPromptSize = false }) {
+async function callClaude({ system, user, maxTokens = 4000, useWebSearch = false }) {
   const body = {
     model: CONFIG.model,
     max_tokens: maxTokens,
@@ -75,16 +75,13 @@ async function callClaude({ system, user, maxTokens = 4000, useWebSearch = false
     body.tools = [{ type: "web_search_20250305", name: "web_search", max_uses: 3 }]
   }
 
-  if (logPromptSize) {
-    const __ptxt = JSON.stringify(body.messages) + JSON.stringify(body.system ?? "")
-    console.log("📏 PROMPT znaki:", __ptxt.length, "| szac. tokeny:", Math.round(__ptxt.length / 4))
-    console.log("📦 max_tokens:", body.max_tokens)
-  }
-
   const MAX_ATTEMPTS = 4
   let response
 
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    const __p = JSON.stringify({ system, messages: [{ role: "user", content: user }] })
+    console.log("📏 PROMPT znaki:", __p.length, "| szac. tokeny:", Math.round(__p.length / 4), "| max_tokens:", maxTokens)
+
     response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: {
@@ -98,6 +95,8 @@ async function callClaude({ system, user, maxTokens = 4000, useWebSearch = false
     if (response.ok) break
 
     if (response.status === 429 && attempt < MAX_ATTEMPTS) {
+      console.log("🔎 input-remaining:", response.headers.get("anthropic-ratelimit-input-tokens-remaining"))
+      console.log("🔎 retry-after:", response.headers.get("retry-after"))
       const retryAfterRaw = response.headers.get("retry-after")
       const retryAfterSec = retryAfterRaw ? Number.parseInt(retryAfterRaw, 10) : 60
       const waitSec = (Number.isFinite(retryAfterSec) ? retryAfterSec : 60) + 5
@@ -106,9 +105,6 @@ async function callClaude({ system, user, maxTokens = 4000, useWebSearch = false
       continue
     }
 
-    console.log("🔎 input-remaining:", response.headers.get("anthropic-ratelimit-input-tokens-remaining"))
-    console.log("🔎 input-reset:", response.headers.get("anthropic-ratelimit-input-tokens-reset"))
-    console.log("🔎 retry-after:", response.headers.get("retry-after"))
     throw new Error(`Claude API error ${response.status}: ${await response.text()}`)
   }
 
@@ -205,7 +201,6 @@ async function generateContent(meta, capabilities) {
   console.log("🤖 Wywołanie 2: generowanie treści artykułu...")
 
   const content = await callClaude({
-    logPromptSize: true,
     maxTokens: 8000,
     system: `Jesteś doświadczonym copywriterem piszącym po polsku dla właścicieli sp. z o.o.
 Styl: naturalny, konkretny, bez prawniczego bełkotu. Minimum 700 słów.
