@@ -34,8 +34,17 @@ function PostCard({ post }: { post: BlogPost }) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group card-luxe flex flex-col p-6 transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-luxe)]"
+      className="group card-luxe flex flex-col overflow-hidden p-0 transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-luxe)]"
     >
+      <img
+        src={`/blog/${post.slug}/opengraph-image`}
+        alt={post.title}
+        width={1200}
+        height={630}
+        loading="lazy"
+        className="aspect-[1200/630] w-full object-cover"
+      />
+      <div className="flex flex-col p-6">
       <div className="mb-3 flex items-center justify-between gap-2">
         <CategoryBadge category={post.category} />
         <span className="shrink-0 text-xs text-[#93a0ba]">
@@ -63,6 +72,7 @@ function PostCard({ post }: { post: BlogPost }) {
         <span className="text-xs font-medium text-gold transition-colors group-hover:text-[oklch(0.82_0.13_85)]">
           Czytaj →
         </span>
+      </div>
       </div>
     </Link>
   );

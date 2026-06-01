@@ -151,6 +151,14 @@ export default async function BlogPostPage({ params }: PageProps) {
             </ol>
           </nav>
 
+          <img
+            src={`/blog/${post.slug}/opengraph-image`}
+            alt={post.title}
+            width={1200}
+            height={630}
+            className="mb-10 aspect-[1200/630] w-full rounded-lg object-cover"
+          />
+
           <header className="mb-10">
             <div className="mb-4 flex flex-wrap items-center gap-3">
               <CategoryBadge category={post.category} />

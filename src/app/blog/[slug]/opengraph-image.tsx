@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { getBlogPost, getCategoryLabel } from "@/lib/blog";
+import { getBlogPost, getCategoryLabel, type BlogCategory } from "@/lib/blog";
 
 /**
  * Dynamiczny obraz Open Graph (1200×630) dla wpisu bloga — `next/og` / `@vercel/og`.
@@ -18,6 +18,32 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
+/** Kolory akcentu kategorii — spójne z CategoryBadge.tsx */
+const CATEGORY_ACCENT: Record<
+  BlogCategory,
+  { accent: string; badgeText: string }
+> = {
+  dokumenty: { accent: "#3b82f6", badgeText: "#93c5fd" },
+  terminy: { accent: "#f59e0b", badgeText: "#fcd34d" },
+  krs: { accent: "#a855f7", badgeText: "#e9d5ff" },
+  zus: { accent: "#22c55e", badgeText: "#bbf7d0" },
+  us: { accent: "#ef4444", badgeText: "#fecaca" },
+  poradnik: { accent: "#14b8a6", badgeText: "#99f6e4" },
+};
+
+const FALLBACK_ACCENT = { accent: "#d4af37", badgeText: "#e8d7a0" };
+
+/**
+ * Konwertuje hex (#rrggbb) na rgba z podaną przezroczystością.
+ */
+function rgbaFromHex(hex: string, alpha: number): string {
+  const h = hex.replace("#", "");
+  const r = Number.parseInt(h.slice(0, 2), 16);
+  const g = Number.parseInt(h.slice(2, 4), 16);
+  const b = Number.parseInt(h.slice(4, 6), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
 /** Granat + złoty motyw zgodny z landingiem Nawio (inline styles — podzbiór CSS w OG). */
 export default async function OpenGraphImage({ params }: Props) {
   const { slug } = await params;
@@ -28,6 +54,10 @@ export default async function OpenGraphImage({ params }: Props) {
     rawTitle.length > 118 ? `${rawTitle.slice(0, 115).trim()}…` : rawTitle;
   const category = post ? getCategoryLabel(post.category) : "Blog";
 
+  const { accent, badgeText } = post
+    ? CATEGORY_ACCENT[post.category]
+    : FALLBACK_ACCENT;
+
   const titleFontSize = title.length > 72 ? "38px" : title.length > 48 ? "44px" : "52px";
 
   return new ImageResponse(
@@ -36,17 +66,29 @@ export default async function OpenGraphImage({ params }: Props) {
         style={{
           display: "flex",
           flexDirection: "column",
+          position: "relative",
           width: "100%",
           height: "100%",
           backgroundColor: "#0f1419",
           backgroundImage:
-            "radial-gradient(ellipse 80% 60% at 15% 40%, rgba(212, 175, 55, 0.12) 0%, transparent 55%), " +
+            `radial-gradient(ellipse 80% 60% at 15% 40%, ${rgbaFromHex(accent, 0.16)} 0%, transparent 55%), ` +
             "radial-gradient(ellipse 70% 50% at 85% 15%, rgba(59, 130, 246, 0.08) 0%, transparent 50%), " +
             "linear-gradient(165deg, #121a26 0%, #0c1118 100%)",
           padding: "56px 64px",
           justifyContent: "space-between",
         }}
       >
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            width: "8px",
+            height: "100%",
+            backgroundColor: accent,
+          }}
+        />
+
         <div
           style={{
             display: "flex",
@@ -94,12 +136,12 @@ export default async function OpenGraphImage({ params }: Props) {
             style={{
               display: "flex",
               alignItems: "center",
-              backgroundColor: "rgba(212, 175, 55, 0.12)",
-              border: "1px solid rgba(212, 175, 55, 0.35)",
+              backgroundColor: rgbaFromHex(accent, 0.1),
+              border: `1px solid ${rgbaFromHex(accent, 0.35)}`,
               borderRadius: "9999px",
               padding: "8px 18px",
               fontSize: "15px",
-              color: "#e8d7a0",
+              color: badgeText,
               fontWeight: 600,
               maxWidth: "380px",
               textAlign: "right",
