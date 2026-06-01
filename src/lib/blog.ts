@@ -668,6 +668,175 @@ Przewodniczący Zgromadzenia:         Protokolant:
 </article>
     `,
   },
+  // =========================================================================
+  // ARTYKUŁ (auto): Odpowiedzialność członka zarządu sp. z o.o. za długi spółki
+  // =========================================================================
+  {
+    slug: "odpowiedzialnosc-czlonka-zarzadu-sp-z-o-o",
+    title: "Odpowiedzialność członka zarządu sp. z o.o. za długi spółki",
+    description: "Czy członek zarządu odpowiada za długi sp. z o.o.? Kiedy grozi odpowiedzialność majątkiem prywatnym? Art. 299 KSH, przesłanki, wyłączenia i sposób obrony.",
+    publishedAt: "2026-06-01",
+    category: "poradnik",
+    readingTime: 6,
+    content: `
+<article>
+<h2>Odpowiedzialność członka zarządu — fundament prawa spółek</h2>
+
+<p>Kiedy zakładasz sp. z o.o., jednym z głównych powodów jest chęć oddzielenia swojego majątku prywatnego od ryzyka biznesowego. Spółka z ograniczoną odpowiedzialnością w teorii chroni Twój dom, samochód i konto przed wierzycielami firmy. Ale świat nie jest czarno-biały — istnieje art. 299 Kodeksu spółek handlowych, który mówi, że w określonych sytuacjach członek zarządu może odpowiadać za długi spółki własnym majątkiem.</p>
+
+<p>To nie jest abstrakcyjna groźba. Rocznie tysiące członków zarządu w Polsce dostaje wezwania do zapłaty z art. 299 KSH. Wierzyciele — ZUS, US, dostawcy, banki — szukają osoby fizycznej, która zapłaci za nieściągalne zobowiązania spółki. Dla wielu przedsiębiorców to szok: myśleli, że ich prywatny majątek jest bezpieczny, a nagle komornik puka do drzwi.</p>
+
+<p>W tym artykule wyjaśniamy, kiedy dokładnie członek zarządu odpowiada za długi sp. z o.o., jakie są przesłanki tej odpowiedzialności, kiedy możesz się bronić i jak zminimalizować ryzyko jeszcze zanim pojawią się problemy.</p>
+
+<h2>Art. 299 KSH — podstawa odpowiedzialności członka zarządu</h2>
+
+<p>Artykuł 299 § 1 Kodeksu spółek handlowych brzmi tak: „Jeżeli egzekucja przeciwko spółce okaże się bezskuteczna, członkowie zarządu odpowiadają solidarnie za jej zobowiązania".</p>
+
+<p>Warto to rozbić na części:</p>
+
+<ul>
+<li><strong>Egzekucja musi być bezskuteczna</strong> — wierzyciel najpierw próbuje ściągnąć dług od spółki, komornik wydaje postanowienie o bezskuteczności egzekucji (np. „nie ujawniono majątku wystarczającego na zaspokojenie wierzyciela").</li>
+<li><strong>Odpowiedzialność jest solidarna</strong> — jeśli w zarządzie było kilka osób, wierzyciel może żądać całości długu od dowolnego z nich. Potem członkowie mogą się między sobą rozliczyć, ale na zewnątrz każdy odpowiada za wszystko.</li>
+<li><strong>Dotyczy zobowiązań spółki</strong> — chodzi o długi cywilnoprawne: umowy, faktury, kredyty, zobowiązania wobec ZUS i US, kary umowne, odszkodowania.</li>
+</ul>
+
+<p>Kluczowe jest to, że odpowiedzialność członka zarządu nie jest automatyczna. Musisz jako członek zarządu dopuścić się zaniedbania lub zaniechania, które uniemożliwiło wierzycielowi zaspokojenie. Najczęściej chodzi o niezgłoszenie wniosku o upadłość.</p>
+
+<h2>Kiedy członek zarządu odpowiada za długi spółki?</h2>
+
+<p>Odpowiedzialność z art. 299 KSH uruchamia się, gdy spełnione są trzy przesłanki:</p>
+
+<h3>1. Bezskuteczność egzekucji przeciwko spółce</h3>
+
+<p>Wierzyciel najpierw musi uzyskać tytuł wykonawczy przeciwko sp. z o.o. (wyrok sądu, nakaz zapłaty, decyzja administracyjna) i wszcząć egzekucję. Jeśli komornik nie znajdzie majątku wystarczającego na pokrycie długu, wydaje postanowienie o bezskuteczności egzekucji. Dopiero wtedy można celować w zarząd.</p>
+
+<h3>2. Niezłożenie wniosku o ogłoszenie upadłości</h3>
+
+<p>Art. 21 Prawa upadłościowego mówi wyraźnie: zarząd musi złożyć wniosek o ogłoszenie upadłości spółki w ciągu 30 dni od dnia, w którym wystąpiła podstawa do ogłoszenia upadłości. Podstawą jest najczęściej niewypłacalność — spółka nie płaci długów w terminie przekraczającym trzy miesiące albo zobowiązania przekroczyły wartość majątku (bilansowa niewypłacalność).</p>
+
+<p>Jeśli zarząd tego nie zrobi, wierzyciel może twierdzić, że to zaniedbanie uniemożliwiło mu dochodzenie swoich praw. Kluczowa jest data powstania niewypłacalności i moment, kiedy zarząd powinien był zareagować.</p>
+
+<h3>3. Wina lub zaniedbanie członka zarządu</h3>
+
+<p>Kodeks spółek handlowych zakłada domniemanie winy. To znaczy, że to nie wierzyciel musi udowadniać, że działałeś nieprawidłowo — to Ty jako członek zarządu musisz wykazać, że postąpiłeś zgodnie z prawem i dołożyłeś należytej staranności. To poważne obciążenie procesowe.</p>
+
+<h2>Zobowiązania, za które członek zarządu może odpowiadać</h2>
+
+<p>Odpowiedzialność z art. 299 KSH obejmuje wszystkie zobowiązania spółki, nie tylko te powstałe w czasie Twojego pełnienia funkcji. Obejmuje to:</p>
+
+<ul>
+<li><strong>Zobowiązania wobec kontrahentów</strong> — nieopłacone faktury, należności handlowe, kary umowne.</li>
+<li><strong>Zobowiązania podatkowe</strong> — zaległości w CIT, VAT, PIT od pracowników (jeśli spółka nie odprowadzała zaliczek).</li>
+<li><strong>Zobowiązania wobec ZUS</strong> — składki zdrowotne i społeczne, odsetki, koszty egzekucyjne.</li>
+<li><strong>Zobowiązania kredytowe</strong> — niespłacone kredyty i pożyczki (o ile nie masz osobnego poręczenia, które i tak cię wiąże niezależnie od art. 299).</li>
+<li><strong>Odszkodowania</strong> — np. za szkody wyrządzone przez spółkę w wykonaniu umowy lub z czynu niedozwolonego.</li>
+</ul>
+
+<p>Nie chodzi tylko o długi powstałe „na Twojej zmianie". Jeśli objąłeś funkcję w zarządzie w momencie, gdy spółka już była niewypłacalna, i nie złożyłeś wniosku o upadłość, możesz odpowiadać za zobowiązania sprzed Twojego czasu.</p>
+
+<h2>Kiedy członek zarządu NIE odpowiada? — przesłanki egzoneracyjne</h2>
+
+<p>Kodeks spółek handlowych daje kilka możliwości obrony. Nie odpowiadasz za długi spółki, jeśli udowodnisz, że:</p>
+
+<h3>1. Złożono wniosek o ogłoszenie upadłości na czas</h3>
+
+<p>Jeśli wniosek o upadłość został zgłoszony w terminie 30 dni od powstania niewypłacalności, nie możesz ponosić odpowiedzialności z art. 299 KSH. Istotne jest dokumentowanie momentu, kiedy zorientowałeś się o problemach finansowych spółki.</p>
+
+<h3>2. Niezłożenie wniosku nastąpiło bez Twojej winy</h3>
+
+<p>Może się zdarzyć, że nie byłeś w stanie ocenić sytuacji finansowej spółki — np. główny księgowy ukrywał prawdziwy stan rzeczy, a Ty działałeś w dobrej wierze. Musisz jednak wykazać, że dochowałeś staranności w nadzorowaniu finansów.</p>
+
+<h3>3. Wierzyciel i tak nie zostałby zaspokojony</h3>
+
+<p>Jeśli potrafisz udowodnić, że nawet przy terminowym złożeniu wniosku o upadłość masa upadłości nie wystarczyłaby na zaspokojenie wierzyciela, możesz uniknąć odpowiedzialności. To trudne do wykazania, bo wymaga szczegółowej analizy stanu majątku w danym momencie.</p>
+
+<h3>4. Nie byłeś członkiem zarządu w krytycznym okresie</h3>
+
+<p>Jeśli ustąpiłeś z zarządu przed powstaniem zobowiązania lub przed momentem, gdy należało zgłosić upadłość, nie odpowiadasz za to, co stało się później. Istotne jest jednak, czy nie złożyłeś rezygnacji „na papierze", podczas gdy faktycznie nadal kierowałeś spółką.</p>
+
+<h2>Jak wygląda proces dochodzenia odpowiedzialności?</h2>
+
+<p>Procedura wygląda mniej więcej tak:</p>
+
+<ol>
+<li><strong>Wierzyciel uzyskuje tytuł wykonawczy przeciwko spółce</strong> — wyrok, nakaz zapłaty, decyzję administracyjną.</li>
+<li><strong>Wierzyciel kieruje sprawę do komornika</strong> — wszczyna egzekucję wobec sp. z o.o.</li>
+<li><strong>Komornik wydaje postanowienie o bezskuteczności egzekucji</strong> — nie ma majątku do zajęcia.</li>
+<li><strong>Wierzyciel pozywa członka zarządu</strong> — składa pozew na podstawie art. 299 KSH do sądu właściwego według miejsca zamieszkania pozwanego.</li>
+<li><strong>Sąd bada przesłanki odpowiedzialności</strong> — czy egzekucja była bezskuteczna, czy nie złożono wniosku o upadłość, czy członek zarządu wykazał brak winy.</li>
+<li><strong>Wyrok zasądzający lub oddalający powództwo</strong> — jeśli sąd przyzna rację wierzycielowi, członek zarządu zostaje zobowiązany do zapłaty z własnego majątku.</li>
+</ol>
+
+<p>Postępowanie może trwać od kilku miesięcy do kilku lat. W tym czasie możesz negocjować z wierzycielem ugodę, próbować udowodnić, że dochowałeś staranności, albo wykazać przesłanki egzoneracyjne.</p>
+
+<h2>Odpowiedzialność karna członka zarządu — osobna sprawa</h2>
+
+<p>Oprócz odpowiedzialności cywilnej z art. 299 KSH istnieje także odpowiedzialność karna. Dotyczy ona sytuacji, gdy członek zarządu dopuścił się przestępstwa:</p>
+
+<ul>
+<li><strong>Art. 586 Kodeksu spółek handlowych</strong> — niezłożenie wniosku o upadłość w terminie (kara grzywny, ograniczenia wolności lub do 2 lat pozbawienia wolności).</li>
+<li><strong>Art. 587 KSH</strong> — działanie na szkodę wierzycieli (np. wyprowadzanie majątku spółki, ukrywanie dokumentów).</li>
+<li><strong>Kodeks karny skarbowy</strong> — jeśli dług dotyczy zobowiązań podatkowych lub składek ZUS, możliwe jest postępowanie karne skarbowe.</li>
+</ul>
+
+<p>Odpowiedzialność karna nie zwalnia z odpowiedzialności cywilnej — są to dwa oddzielne tory. Możesz zostać skazany za niezłożenie wniosku o upadłość i równolegle odpowiadać majątkiem za zobowiązania spółki.</p>
+
+<h2>Jak się zabezpieczyć jako członek zarządu?</h2>
+
+<p>Lepiej dmuchać na zimne niż potem gasić pożar. Oto kilka praktycznych rad, które pomogą zminimalizować ryzyko odpowiedzialności:</p>
+
+<h3>Monitoruj na bieżąco sytuację finansową spółki</h3>
+
+<p>Nie czekaj do końca roku z analizą bilansu. Przeglądaj regularne raporty finansowe, sprawdzaj płynność, kontroluj terminowość płatności wobec kontrahentów, ZUS i US. Jeśli widzisz, że spółka zaczyna opóźniać się z płatnościami o więcej niż kilka tygodni, to poważny sygnał ostrzegawczy.</p>
+
+<h3>Dokumentuj decyzje zarządu</h3>
+
+<p>Protokołuj posiedzenia zarządu, uchwały o podjęciu działań naprawczych, korespondencję z księgowym i doradcą prawnym. W sporze sądowym będziesz musiał wykazać, że działałeś z należytą starannością — a bez dokumentów to trudne.</p>
+
+<h3>Konsultuj się z prawnikiem i doradcą podatkowym</h3>
+
+<p>Jeśli spółka ma problemy finansowe, nie czekaj do momentu, gdy będzie już za późno. Wczesna rozmowa z doradcą pomoże ocenić, czy grozi niewypłacalność i kiedy złożyć wniosek o upadłość lub restrukturyzację.</p>
+
+<h3>Rozważ ubezpieczenie odpowiedzialności zarządu (D&O)</h3>
+
+<p>Polisa D&O (Directors and Officers Liability Insurance) pokrywa koszty obrony przed roszczeniami wierzycieli oraz ewentualne odszkodowania. To szczególnie przydatne, jeśli zarządzasz spółką o większych obrotach lub w branży wysokiego ryzyka.</p>
+
+<h3>W razie niewypłacalności — działaj natychmiast</h3>
+
+<p>Jeśli spółka nie ma środków na bieżące zobowiązania dłużej niż trzy miesiące, nie czekaj. Złóż wniosek o ogłoszenie upadłości lub o otwarcie postępowania restrukturyzacyjnego (sanacyjnego, przyspieszonego układowego). Termin to 30 dni — każdy dzień zwłoki zwiększa ryzyko osobistej odpowiedzialności.</p>
+
+<h2>Co zrobić, gdy dostajesz wezwanie z art. 299 KSH?</h2>
+
+<p>Jeśli już otrzymałeś wezwanie do zapłaty lub pozew, nie panikuj. Masz możliwości obrony:</p>
+
+<ul>
+<li><strong>Sprawdź, czy egzekucja była faktycznie bezskuteczna</strong> — czy komornik dokładnie przeszukał majątek spółki, czy postępowanie przebiegło prawidłowo.</li>
+<li><strong>Przeanalizuj terminy</strong> — kiedy powstała niewypłacalność, kiedy byłeś członkiem zarządu, czy złożono wniosek o upadłość na czas.</li>
+<li><strong>Zbierz dokumentację</strong> — protokoły z posiedzeń zarządu, raporty finansowe, korespondencję mailową, decyzje wspólników.</li>
+<li><strong>Zatrudnij prawnika specjalizującego się w prawie upadłościowym i odpowiedzialności zarządu</strong> — to nie jest obszar do samodzielnych prób.</li>
+<li><strong>Rozważ ugodę z wierzycielem</strong> — czasem lepiej negocjować spłatę na raty niż ryzykować wyrok zasądzający pełną kwotę plus odsetki i koszty procesu.</li>
+</ul>
+
+<p>Pamiętaj, że ciężar dowodu w dużej mierze spoczywa na Tobie — musisz wykazać, że działałeś zgodnie z prawem i dochowałeś staranności. Bez solidnej dokumentacji i wsparcia prawnika to bardzo trudne zadanie.</p>
+
+<h2>Odpowiedzialność solidarna — co to znaczy w praktyce?</h2>
+
+<p>Jeśli w zarządzie było kilka osób, wierzyciel może pozwać dowolnego członka zarządu o całość długu. Załóżmy, że spółka ma zobowiązanie 200 tys. zł, a w zarządzie było trzech członków. Wierzyciel może skierować pozew przeciwko jednemu z was o całe 200 tys. zł.</p>
+
+<p>Następnie ten, kto zapłacił, może żądać zwrotu udziału od pozostałych członków zarządu (tzw. regres). Ale to już wewnętrzna sprawa między byłymi członkami zarządu. Dla wierzyciela liczy się, że może wybrać osobę najłatwiejszą do sięgnięcia — np. tę, która ma widoczny majątek.</p>
+
+<h2>Jak Nawio pomaga właścicielom sp. z o.o.?</h2>
+
+<p>Zarządzanie sp. z o.o. to nie tylko podejmowanie decyzji biznesowych, ale także pilnowanie terminów korporacyjnych, które mogą mieć wpływ na Twoją odpowiedzialność. Nawio to aplikacja stworzona z myślą o właścicielach i zarządach spółek z ograniczoną odpowiedzialnością, która pomaga utrzymać porządek w formalnych obowiązkach.</p>
+
+<p>W Nawio możesz zarządzać kalendarzem terminów korporacyjnych — od zgromadzeń wspólników, przez terminy złożenia sprawozdania finansowego, aż po zmiany w KRS. Aplikacja automatycznie generuje terminy z szablonów i wysyła przypomnienia e-mail na kilka dni przed upływem deadlinu, więc nie przegapisz ważnej daty. To szczególnie istotne w kontekście odpowiedzialności zarządu — terminowe składanie dokumentów, protokołowanie uchwał i dbanie o prawidłową komunikację ze wspólnikami może być później kluczowym dowodem dochowania należytej staranności.</p>
+
+<p>Nawio umożliwia także generowanie dokumentów korporacyjnych w formacie .docx — możesz tworzyć uchwały, protokoły ze zgromadzeń wspólników czy innych dokumentów na podstawie danych Twojej spółki. Wszystko odbywa się w jednym miejscu: profile spółek (KRS, NIP, adres, skład zarządu i wspólników), zadania z terminami i priorytetami, oraz asystent AI działający w kontekście aktywnej spółki. Nawio to narzędzie, które pozwala właścicielom sp. z o.o. zachować kontrolę nad formalnościami i zminimalizować ryzyko związane z opóźnieniami czy błędami w dokumentacji.</p>
+
+<div class='disclaimer'><p>Treści publikowane przez Nawio mają charakter informacyjny i nie stanowią porady prawnej ani podatkowej. BearStone sp. z o.o. nie ponosi odpowiedzialności za skutki działań podjętych na ich podstawie.</p></div>
+</article>
+    `,
+  },
 ]
 
 // ---------------------------------------------------------------------------
