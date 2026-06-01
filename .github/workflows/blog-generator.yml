@@ -22,7 +22,6 @@
 # - permissions: contents: write + pull-requests: write — wymagane do tworzenia PR
 # - GITHUB_REPO ustawiamy dynamicznie z github.repository
 #
-# @author Jadźka (Cursor AI persona) + Mihu
 # @updated 2026-05-12
 
 name: Blog Auto-Generator
