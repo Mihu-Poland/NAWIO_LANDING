@@ -16,7 +16,7 @@
  * 3. Dodaj do tablicy POSTS
  * 4. Gotowe — sitemap i OG image generują się automatycznie
  *
- * @author Jadźka (Cursor AI persona) + Mihu
+ * @author Mihu
  * @updated 2026-05-12
  */
 

@@ -3,7 +3,7 @@
  * --------------------------------------------
  * Artykuł: Terminy KRS 2026 — co i kiedy zgłosić w spółce z o.o.
  *
- * @author Jadźka (Cursor AI persona) + Mihu
+ * @author Mihu
  * @updated 2026-05-12
  */
 

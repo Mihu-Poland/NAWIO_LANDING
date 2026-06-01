@@ -4,7 +4,7 @@
  * Artykuł: Uchwała sp. z o.o. — wzór i instrukcja krok po kroku
  * Wydzielony z blog.ts do osobnego pliku (refactor pod auto-generator).
  *
- * @author Jadźka (Cursor AI persona) + Mihu
+ * @author Mihu
  * @updated 2026-05-12
  */
 

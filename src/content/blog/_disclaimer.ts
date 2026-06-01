@@ -6,7 +6,7 @@
  *
  * Zmiana treści w jednym miejscu = zmiana wszędzie. Tak jak powinno być.
  *
- * @author Jadźka (Cursor AI persona) + Mihu
+ * @author Mihu
  * @updated 2026-05-12
  */
 

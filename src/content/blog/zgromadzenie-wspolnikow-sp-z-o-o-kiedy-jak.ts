@@ -3,7 +3,7 @@
  * -----------------------------------------------------------------------
  * Artykuł: Zgromadzenie wspólników sp. z o.o. — kiedy i jak zwołać
  *
- * @author Jadźka (Cursor AI persona) + Mihu
+ * @author Mihu
  * @updated 2026-05-12
  */
 
