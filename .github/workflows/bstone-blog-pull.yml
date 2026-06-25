@@ -1,0 +1,61 @@
+name: BStone Blog Pull
+
+# Centralny silnik treści: pobiera gotowy wpis z BStone AI i otwiera PR.
+# Zastępuje stary generator (blog-generator.yml) — treść powstaje w Gromadzie BStone.
+on:
+  schedule:
+    # Co poniedziałek 6:00 UTC — jak poprzedni generator
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  pull-post:
+    name: Pull post from BStone
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Pull post from BStone
+        id: pull
+        env:
+          BSTONE_BLOG_TOKEN: ${{ secrets.BSTONE_BLOG_TOKEN }}
+        run: node scripts/pull-from-bstone.mjs
+
+      - name: Create Pull Request
+        if: steps.pull.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          commit-message: "blog: wpis z BStone (${{ steps.pull.outputs.slug }})"
+          branch: "bstone-blog/${{ github.run_id }}"
+          base: main
+          title: "📝 Nowy wpis z BStone — sprawdź i zatwierdź"
+          body: |
+            ## Wpis wygenerowany centralnie przez BStone AI
+
+            **Slug:** `${{ steps.pull.outputs.slug }}`
+
+            Treść powstała w Gromadzie BStone (Topic Engine → Scribe + research → Sentinel → Index Bear AEO),
+            wstawiona jako obiekt `BlogPost` (HTML) do `src/lib/blog.ts`.
+
+            ### Jak zatwierdzić
+            1. Przejrzyj treść w „Files changed”
+            2. Merge → Vercel wdroży
+
+            ---
+            *BStone AI — centralny silnik treści 🐻*
+          labels: |
+            blog
+            bstone

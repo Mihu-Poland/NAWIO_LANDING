@@ -27,10 +27,10 @@
 name: Blog Auto-Generator
 
 on:
-  # Cron: co poniedziałek o 7:00 CET (= 6:00 UTC w czasie zimowym, 5:00 UTC letnim)
-  # Używamy 6:00 UTC — w sezonie letnim będzie 8:00 CEST, co też jest OK
-  schedule:
-    - cron: "0 6 * * 1"
+  # WYŁĄCZONE: treść generuje teraz centralnie BStone AI (workflow: bstone-blog-pull.yml).
+  # Stary generator zostawiony tylko do ręcznego odpalenia awaryjnego.
+  # schedule:
+  #   - cron: "0 6 * * 1"
 
   # Ręczne odpalenie z GitHub Actions UI
   workflow_dispatch:
