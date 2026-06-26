@@ -37,6 +37,8 @@ export interface BlogPost {
   updatedAt?: string     // opcjonalne — gdy artykuł był aktualizowany
   category: BlogCategory
   readingTime: number    // szacowane minuty czytania
+  tldr?: string          // opcjonalny skrót (TL;DR) — zapełni się z Gromady (BStone)
+  faq?: Array<{ question: string; answer: string }>  // opcjonalne FAQ — z Gromady (BStone)
 }
 
 // ---------------------------------------------------------------------------

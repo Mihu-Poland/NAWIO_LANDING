@@ -115,6 +115,30 @@ function BlogPostingJsonLd({ post }: { post: BlogPost }) {
 }
 
 /**
+ * JSON-LD BreadcrumbList — ścieżka Nawio → Blog → artykuł.
+ *
+ * @author Mihu
+ */
+function BreadcrumbJsonLd({ post }: { post: BlogPost }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Nawio", item: "https://nawio.pl" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://nawio.pl/blog" },
+      { "@type": "ListItem", position: 3, name: post.title },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+/**
  * Strona pojedynczego artykułu (treść HTML z `src/lib/blog.ts`, styl `.blog-prose` z globals.css).
  *
  * @author Mihu
@@ -130,6 +154,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   return (
     <>
       <BlogPostingJsonLd post={post} />
+      <BreadcrumbJsonLd post={post} />
 
       <main className="container-main py-12 md:py-16">
         <div className="mx-auto max-w-3xl">
@@ -182,12 +207,55 @@ export default async function BlogPostPage({ params }: PageProps) {
             </div>
           </header>
 
+          {post.tldr ? (
+            <div className="mb-10 rounded-xl border border-[var(--gold)]/30 bg-[var(--gold-soft)] p-5">
+              <p className="text-sm font-semibold text-[var(--gold)]">W skrócie</p>
+              <p className="mt-2 text-[#bcc6d8]">{post.tldr}</p>
+            </div>
+          ) : null}
+
           <hr className="mb-10 border-(--card-border)" />
 
           <div
             className="blog-prose card-luxe p-6 md:p-10"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
+
+          {post.faq?.length ? (
+            <>
+              <section className="mt-12">
+                <h2 className="mb-6 text-xl font-semibold text-white">Najczęstsze pytania</h2>
+                <dl className="space-y-4">
+                  {post.faq.map((item) => (
+                    <div
+                      key={item.question}
+                      className="rounded-xl border border-(--card-border) bg-white/5 p-4"
+                    >
+                      <dt className="font-medium text-white">{item.question}</dt>
+                      <dd className="mt-2 text-sm text-[#93a0ba]">{item.answer}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </section>
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    mainEntity: post.faq.map((item) => ({
+                      "@type": "Question",
+                      name: item.question,
+                      acceptedAnswer: {
+                        "@type": "Answer",
+                        text: item.answer,
+                      },
+                    })),
+                  }),
+                }}
+              />
+            </>
+          ) : null}
 
           <hr className="my-12 border-(--card-border)" />
 
