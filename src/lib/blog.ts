@@ -669,6 +669,44 @@ Przewodniczący Zgromadzenia:         Protokolant:
   ${DISCLAIMER}
 </article>
     `,
+  },
+
+  // =========================================================================
+  // ARTYKUŁ: KSeF a spółka z o.o. — obowiązki 2026
+  // =========================================================================
+  {
+    slug: "ksef-spolka-zoo-obowiazki-2026",
+    title: "KSeF a spółka z o.o. — co musisz ogarnąć, żeby kwiecień 2026 Cię nie zaskoczył",
+    description:
+      "Od 1 kwietnia 2026 KSeF jest obowiązkowy dla wszystkich spółek z o.o. Odbieranie faktur obowiązuje już od lutego. Sprawdź, co konkretnie musisz zrobić jako właściciel sp. z o.o.",
+    category: "poradnik",
+    readingTime: 4,
+    publishedAt: "2026-06-26",
+    content: `
+<h2>Spółka z o.o. a KSeF — to już nie „kiedyś"</h2>
+<p>Jeśli prowadzisz spółkę z ograniczoną odpowiedzialnością, Krajowy System e-Faktur dotyczy Cię od <strong>1 kwietnia 2026 roku</strong>. Ale jeden obowiązek wszedł w życie jeszcze wcześniej — <strong>odbieranie faktur w KSeF jest obowiązkowe od 1 lutego 2026</strong>, niezależnie od wielkości Twojej firmy.</p>
+<p>To oznacza, że faktury od dużych dostawców (hurtowni, firm logistycznych, operatorów telekomunikacyjnych) mogą już teraz trafiać wyłącznie do KSeF. Jeśli nie masz skonfigurowanego dostępu — po prostu ich nie widzisz. Nie trafiają na maila, nie pojawiają się w systemie fakturowym. Są, ale w miejscu, do którego nie zajrzałeś.</p>
+<h2>Co musisz zrobić jako właściciel sp. z o.o.</h2>
+<p><strong>1. Uzyskaj dostęp do KSeF</strong> — uwierzytelnienie profilem zaufanym lub podpisem kwalifikowanym na ksef.podatki.gov.pl. Jako prezes zarządu masz uprawnienia automatycznie, ale musisz je aktywować.</p>
+<p><strong>2. Nadaj uprawnienia</strong> — jeśli faktury wystawia księgowa, biuro rachunkowe lub program księgowy, każdy z nich potrzebuje osobnych uprawnień w KSeF. Bez tego nie wystawią ani nie pobiorą faktury.</p>
+<p><strong>3. Zintegruj oprogramowanie</strong> — Twój program księgowy musi mieć moduł KSeF. Sprawdź u dostawcy, czy jest aktywny i przetestowany.</p>
+<p><strong>4. Ustal procedurę wewnętrzną</strong> — kto w firmie odpowiada za wystawianie, kto za odbieranie, co robimy gdy KSeF ma awarię (bo ma — ustawa przewiduje tryb awaryjny z obowiązkiem dosłania faktur w ciągu 24 godzin).</p>
+<h2>Harmonogram dla sp. z o.o.</h2>
+<table>
+<thead><tr><th>Termin</th><th>Co się dzieje</th></tr></thead>
+<tbody>
+<tr><td>1 lutego 2026</td><td>Odbieranie faktur w KSeF — obowiązkowe dla wszystkich, w tym sp. z o.o.</td></tr>
+<tr><td>1 kwietnia 2026</td><td>Wystawianie faktur w KSeF — obowiązkowe dla wszystkich firm</td></tr>
+<tr><td>Do końca 2026</td><td>Okres przejściowy — brak kar za błędy</td></tr>
+<tr><td>1 stycznia 2027</td><td>Koniec taryfy ulgowej — sankcje do 100% kwoty podatku na fakturze</td></tr>
+</tbody>
+</table>
+<h2>Wyjątek dla najmniejszych — ale nie dla sp. z o.o.</h2>
+<p>Firmy z obrotem do 10 tys. zł brutto miesięcznie mają odroczenie do 1 stycznia 2027. Ale ten wyjątek dotyczy głównie jednoosobowych działalności. Jeśli prowadzisz sp. z o.o. — nawet małą — standard obowiązuje Cię od kwietnia.</p>
+<h2>Co Nawio może w tym pomóc</h2>
+<p>Nawio nie zastąpi Ci systemu fakturowego (od tego jest Twój program księgowy + KSeF). Ale Nawio pilnuje terminów formalnych — i przypomni Ci, że zbliża się termin nadania uprawnień, aktualizacji procedury fakturowania czy zgłoszenia zmian w KRS związanych z obsługą KSeF. To jeden obowiązek mniej do pamiętania.</p>
+<p><em>Pamiętaj: ten artykuł ma charakter informacyjny i nie stanowi porady prawnej ani podatkowej. W razie wątpliwości skonsultuj się z księgowym lub doradcą podatkowym.</em></p>
+    `,
   }
 ]
 
