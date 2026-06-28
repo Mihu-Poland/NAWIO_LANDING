@@ -19,6 +19,8 @@ export function CategoryBadge({ category }: { category: BlogCategory }) {
       "border-[#ef4444]/35 bg-[#ef4444]/10 text-[#fecaca]",
     poradnik:
       "border-[#14b8a6]/35 bg-[#14b8a6]/10 text-[#99f6e4]",
+    podatki:
+      "border-[#d4af37]/35 bg-[#d4af37]/10 text-[#e8d7a0]",
   };
 
   return (

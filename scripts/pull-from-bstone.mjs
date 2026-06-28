@@ -71,7 +71,10 @@ if (closeIdx === -1 || closeIdx < startIdx) {
   process.exit(1);
 }
 
-src = src.slice(0, closeIdx) + "\n" + obj + src.slice(closeIdx + 1);
+// Upewnij się, że poprzedni ostatni element ma przecinek (inaczej "}\n  {" = blad parsowania).
+let head = src.slice(0, closeIdx).replace(/\s+$/, "");
+if (!head.endsWith(",") && !head.endsWith("[")) head += ",";
+src = head + "\n" + obj + src.slice(closeIdx + 1);
 fs.writeFileSync(file, src, "utf-8");
 console.log("Dodano wpis:", p.slug);
 

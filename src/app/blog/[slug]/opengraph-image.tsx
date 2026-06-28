@@ -29,6 +29,7 @@ const CATEGORY_ACCENT: Record<
   zus: { accent: "#22c55e", badgeText: "#bbf7d0" },
   us: { accent: "#ef4444", badgeText: "#fecaca" },
   poradnik: { accent: "#14b8a6", badgeText: "#99f6e4" },
+  podatki: { accent: "#d4af37", badgeText: "#e8d7a0" },
 };
 
 const FALLBACK_ACCENT = { accent: "#d4af37", badgeText: "#e8d7a0" };

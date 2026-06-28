@@ -27,6 +27,7 @@ export type BlogCategory =
   | "zus"
   | "us"
   | "poradnik"
+  | "podatki"
 
 export interface BlogPost {
   slug: string
@@ -707,7 +708,7 @@ Przewodniczący Zgromadzenia:         Protokolant:
 <p>Nawio nie zastąpi Ci systemu fakturowego (od tego jest Twój program księgowy + KSeF). Ale Nawio pilnuje terminów formalnych — i przypomni Ci, że zbliża się termin nadania uprawnień, aktualizacji procedury fakturowania czy zgłoszenia zmian w KRS związanych z obsługą KSeF. To jeden obowiązek mniej do pamiętania.</p>
 <p><em>Pamiętaj: ten artykuł ma charakter informacyjny i nie stanowi porady prawnej ani podatkowej. W razie wątpliwości skonsultuj się z księgowym lub doradcą podatkowym.</em></p>
     `,
-  }
+  },
   // =========================================================================
   // ARTYKUŁ (auto): CIT estoński sp. z o.o. – czy warto w 2026? Przewodnik
   // =========================================================================
@@ -1008,6 +1009,7 @@ export function getCategoryLabel(category: BlogCategory): string {
     zus: "ZUS",
     us: "Urząd Skarbowy",
     poradnik: "Poradnik",
+    podatki: "Podatki",
   }
   return labels[category]
 }
