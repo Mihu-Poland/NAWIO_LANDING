@@ -50,6 +50,10 @@ const obj =
   `    publishedAt: ${JSON.stringify(p.publishedAt)},\n` +
   `    category: ${JSON.stringify(p.category)},\n` +
   `    readingTime: ${Number(p.readingTime) || 4},\n` +
+  (p.tldr ? `    tldr: ${JSON.stringify(p.tldr)},\n` : "") +
+  (Array.isArray(p.faq) && p.faq.length
+    ? `    faq: ${JSON.stringify(p.faq)},\n`
+    : "") +
   `    content: ${JSON.stringify(p.content)},\n` +
   `  },\n`;
 
