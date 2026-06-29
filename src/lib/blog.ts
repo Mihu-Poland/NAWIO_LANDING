@@ -955,17 +955,6 @@ Przewodniczący Zgromadzenia:         Protokolant:
 </article>
     `,
   },
-  {
-    slug: "prokura-w-sp-z-o-o-co-to-jest-i-jak-ja-ustanowic",
-    title: "Prokura w sp. z o.o. — co to jest i jak ją ustanowić",
-    description: "Prokura to szczególne pełnomocnictwo handlowe udzielane przez przedsiębiorcę wpisanego do rejestru. - obejmuje czynności sądowe i pozasądowe związane z prowad",
-    publishedAt: "2026-06-28",
-    category: "dokumenty",
-    readingTime: 1,
-    tldr: "Prokura to szczególne pełnomocnictwo handlowe udzielane przez przedsiębiorcę wpisanego do rejestru.\n- obejmuje czynności sądowe i pozasądowe związane z prowadzeniem przedsiębiorstwa\n- w sp. z o.o. powołuje ją zarząd, a ustanowienie zgłasza się do KRS\n- nie obejmuje zbycia przedsiębiorstwa ani nieruchomości bez odrębnego pełnomocnictwa",
-    faq: [{"question":"Kto może ustanowić prokurę w spółce z o.o.?","answer":"Prokurę ustanawia zarząd spółki — do jej powołania wymagana jest zgoda wszystkich członków zarządu."},{"question":"Czy prokurę trzeba zgłosić do KRS?","answer":"Tak. Ustanowienie prokury zgłasza się do KRS w terminie 7 dni od jej powołania."},{"question":"Czy prokurent może sprzedać nieruchomość spółki?","answer":"Nie. Prokura nie obejmuje zbycia ani obciążenia nieruchomości — wymaga to odrębnego pełnomocnictwa."}],
-    content: "<article>\n<h2>Czym jest prokura</h2>\n<p><strong>Prokura</strong> to pełnomocnictwo handlowe uregulowane w Kodeksie cywilnym, którego może udzielić przedsiębiorca podlegający wpisowi do KRS. Upoważnia prokurenta do czynności sądowych i pozasądowych związanych z prowadzeniem przedsiębiorstwa.</p>\n<h2>Zakres prokury</h2>\n<ul>\n<li>reprezentowanie spółki w sądzie i poza nim,</li>\n<li>zawieranie umów w ramach bieżącej działalności,</li>\n<li>podpisywanie dokumentów handlowych.</li>\n</ul>\n<p>Prokura nie obejmuje zbycia przedsiębiorstwa, oddania go do czasowego korzystania ani zbycia i obciążenia nieruchomości — do tych czynności potrzebne jest odrębne pełnomocnictwo.</p>\n<h2>Jak ustanowić prokurę w sp. z o.o.</h2>\n<ol>\n<li>Zarząd podejmuje uchwałę o powołaniu prokurenta (zgoda wszystkich członków zarządu).</li>\n<li>Prokurent składa oświadczenie o przyjęciu funkcji.</li>\n<li>Spółka zgłasza prokurę do KRS w terminie 7 dni od ustanowienia.</li>\n</ol>\n</article>",
-  },
 ]
 
 // ---------------------------------------------------------------------------
