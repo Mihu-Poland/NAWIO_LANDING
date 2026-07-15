@@ -1,0 +1,17 @@
+---
+description: Pętla samouczenia — AGENTS.md + LEARNINGS.md przed każdym zadaniem
+alwaysApply: true
+---
+
+# Samouczenie (Jadźka)
+
+Zastosuj zasady z **`AGENTS.md`** w korzeniu repo.
+
+Przed **każdym** zadaniem (feature, fix, refactor):
+
+1. Przeczytaj **`LEARNINGS.md`** w całości.
+2. Zastosuj pasujące nauczki — nie powtarzaj błędów już zapisanych.
+
+Po zadaniu, gdy coś poszło nie tak / było nieoczywiste / Mihu poprawił — dopisz wpis do `LEARNINGS.md` (format w `AGENTS.md`). Gładko = nic nie dopisuj.
+
+Pełna higiena (8 reguł, fail-safe, raport końcowy) — w `AGENTS.md`.
